@@ -20,12 +20,12 @@
 ###  Checklist - done / to be done
 
 - [x] Card
-- [ ] Chain
-- [ ] Deck
-- [ ] DiscardPile
+- [x] Chain
+- [x] Deck
+- [x] DiscardPile
 - [ ] TradeArea
 - [ ] Hand
 - [ ] Player
 - [ ] Table
-- [ ] CardFactory
+- [x] CardFactory
 - [ ] Main
