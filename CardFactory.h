@@ -39,7 +39,13 @@ class CardFactory {
             } 
         }
     public:
+        CardFactory(CardFactory &other) = delete();
+        void operator=(const CardFactory&) = delete();
+
         static CardFactory* getFactory() {
+            if(cf == nullptr) {
+                cf = new CardFactory();
+            }
             return cf;
         }
 
@@ -50,3 +56,4 @@ class CardFactory {
             return d;
         }
 };
+

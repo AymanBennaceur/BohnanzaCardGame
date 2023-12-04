@@ -10,7 +10,7 @@
 class DiscardPile : public std::vector<Card*>{ 
     using vector<Card*>::vector;
     public:
-    Deck(istream& is, const CardFactory* cf) {
+    DiscardPile(istream& is, const CardFactory* cf) {
         if(is) {
             is.seekg(0, is.end);
             int l = is.tellg()/2;
