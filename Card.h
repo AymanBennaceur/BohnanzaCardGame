@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
-using namespace std;
+#include "CardFactory.h"
+ namespace std;
 
 class Card {
     protected:
