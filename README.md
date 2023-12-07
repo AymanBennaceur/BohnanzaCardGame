@@ -24,8 +24,8 @@
 - [x] Deck
 - [x] DiscardPile
 - [ ] TradeArea
-- [ ] Hand
-- [ ] Player
+- [x] Hand
+- [x] Player
 - [ ] Table
 - [x] CardFactory
 - [ ] Main
