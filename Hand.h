@@ -10,7 +10,7 @@
 template<typename Card, typename Container=std::queue<Card*>>
 class Hand {
     std::queue<Card*> h;
-    // std::queue<Card*> h;
+
 
     public:
         // Hand(istream& is, const CardFactory cf) {

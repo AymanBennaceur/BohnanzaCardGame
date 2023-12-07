@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "Card.h"
-#include "cardfactory.h"
+#include "CardFactory.h"
 #include <iostream>
 #include <typeinfo>
 using namespace std;
