@@ -14,10 +14,10 @@ class Blue : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -36,10 +36,10 @@ class Chili : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -58,10 +58,10 @@ class Stink : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -80,10 +80,10 @@ class Green : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -102,10 +102,10 @@ class soy : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -124,10 +124,10 @@ class black : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -146,10 +146,10 @@ class Red : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
@@ -168,10 +168,10 @@ class garden : public Card {
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
-        string getName() {
+        std::string getName() {
             return name;
         }
-        void print(ostream& os) {
+        void print(std::ostream& os) {
             os << name[0];
         }
 };
