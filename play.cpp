@@ -87,11 +87,21 @@ void play(Table t) {
             // }
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
+
+            // if chain exist, add card to chain
+
+            // else make a new chain and add to player
+
+            // if out of chain space idk
+
+
             std::cout << "Current chains: \n";
-            for (int i=0; i<players[turn]->getNumChains();i++) {
-                std::cout << players[turn][i];
-            }
+                for (int i=0; i<players[turn]->getNumChains();i++) {
+                    std::cout << players[turn][i];
+                }
+            
             break;
+            turn = !turn;
         }
     }
 }
