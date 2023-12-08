@@ -37,14 +37,14 @@ int Chain<T>::sell() {
 }
 
 //Ajouter un opérateur d’insertion pour afficher Chain
-template<typename T>
-std::ostream& operator <<(std::ostream& os, Chain<Card*>& chain) {
-    os << (chain.getChain())[0]->getName() << "   ";
-    for (int x = 0; x < int(chain.getChain().size());x++) {
-        (chain.getChain())[x]->print(os);
-    }
-    return os;
-}
+// template<typename T>
+// std::ostream& operator <<(std::ostream& os, Chain<Card*>& chain) {
+//     os << (chain.getChain())[0]->getName() << "   ";
+//     for (int x = 0; x < int(chain.getChain().size());x++) {
+//         (chain.getChain())[x]->print(os);
+//     }
+//     return os;
+// }
 
 
 

@@ -31,7 +31,6 @@ Hand* Player::getHand() {
     return hand;
 }
 
-
 //obtenir le nom du joueur
 string Player::getName() const{
     return playerName;
@@ -99,6 +98,6 @@ void Player::printHand(ostream& out, bool argument){
 //this prints the first desired line "Dave 3 coins"
 //we need to print the rest (it says uses Hand so keeping as is for now until implemented)
 ostream& operator<<(ostream& out, const Player& player){
-    out << player.getName() << player.getNumCoins() << " coin"<< (player.coins > 1 ? "s" : "") << "\n";
+    out << player.getName() << " has  " << player.getNumCoins() << " coin"<< (player.coins > 1 ? "s" : "") << "\n";
     return out;
 }

@@ -17,6 +17,11 @@ bool TradeArea::legal(Card* card)  {
     return false;
 }
 
+bool TradeArea::empty() {
+    numCards() == 0;
+}
+
+
 // supprime de l’échange une carte du correspondant nom.
 Card* TradeArea::trade(std::string chainName) {
     // Remove a card of the corresponding bean name from the trade area

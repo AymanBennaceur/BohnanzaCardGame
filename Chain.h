@@ -14,7 +14,13 @@ public:
     int sell();
     Chain(std::istream&, const CardFactory*);
     std::vector<T> getChain();
-    friend std::ostream& operator << (std::ostream & out, const Chain& chain) ;
+    friend std::ostream& operator << (std::ostream & out, Chain& chain)  {
+        out << (chain.getChain())[0]->getName() << "   ";
+        for (int x = 0; x < int(chain.getChain().size());x++) {
+            (chain.getChain())[x]->print(out);
+        }
+        return out;
+    }
 private:
     std::vector<T> cards;
 };

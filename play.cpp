@@ -65,6 +65,8 @@ game loadSavedGame(CardFactory* cf) {
 
 }
 
+
+
 void play(Table t) {
     int turn = 0; // 0 for player 1, 1 for player 2
     Player* players[] = {t.getP1(), t.getP2()};
@@ -76,10 +78,18 @@ void play(Table t) {
             // saveGame(t);
             exit(0);
         } else {
-            std::cout << t;
+            std::cout << "------ Table -------\n" << t << "------ End table -------\n" ;
+            std::cout << players[turn]->getName() << "'s turn\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
-            std::cout << *(players[turn]->getHand());
-            break;
+            if(!t.getTradeArea()->empty()) {
+                //add bean cards from trade area to chains or discard
+            }
+            Card* c = players[turn]->getHand()->play();
+            std::cout << "Card to play: " << *c << "\n";
+            std::cout << "Current chains: \n";
+            for (int i=0; i<players[turn]->getNumChains();i++) {
+                std::cout << players[turn][i];
+            }
         }
     }
     
