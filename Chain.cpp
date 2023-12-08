@@ -12,6 +12,15 @@ public:
     IllegalTypeException() : std::invalid_argument("IllegalTypeException: Runtime type does not match the template type of the chain.") {}
 };
 
+//constructor
+template<typename T>
+Chain<T>::Chain()
+{
+    T card;
+    chainType = card.getName();
+}
+
+
 //ajoute une carte à Chain. Si le type du temps d’exécution ne correspond pas au type patron de la chaîne
 template<typename T>
 Chain<T>& Chain<T>::operator+=(T card) {
