@@ -19,9 +19,6 @@ public:
     Player* getP2();
     DiscardPile* getDiscard();
     TradeArea* getTradeArea();
-
-
-private:
     Player* player1;
     Player* player2;
     Deck* deck;
