@@ -14,7 +14,7 @@ class Deck : public std::vector<Card*> {
         Card* operator[](int i);
         const Card* operator[](int i) const;
         Card* draw();
-        void add(Card*);
+        void add(Card* c);
 
         friend std::ostream& operator << (std::ostream &out, Deck &d){
             for (int i=0; i<d.size(); i++){

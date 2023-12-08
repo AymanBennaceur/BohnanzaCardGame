@@ -23,8 +23,9 @@ class DiscardPile : public std::vector<Card*>{
     void print(std::ostream& out);
 
     friend std::ostream & operator << (std::ostream &out, DiscardPile &d){
-        d.back()->print(out);
-        out << " ";
+        for (int i=0; i<d.size(); i++){
+            d.at(i)->print(out);
+        }
         return out;
     }
 };

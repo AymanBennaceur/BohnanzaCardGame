@@ -9,52 +9,39 @@
 #include "CardFactory.h"
 
 
-struct header {
-    int size_deck;
-    int size_disc;
-    int size_hand1;
-    int size_hand2;
-};
-
-
 void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
-    header game_params;
-    game_params.size_deck = deck->size();
-    game_params.size_disc = disc->size();
-    game_params.size_hand1 = hand1->size();
-    game_params.size_hand2 = hand2->size();
-
-    
-
     std::ofstream save_file;
     save_file.open("save.txt");
-    save_file << *deck;
-    save_file << *disc;
-    save_file << *hand1;
-    save_file << *hand2;
+
+    save_file << *deck << "\n";
+    save_file << *disc << "\n";
+    save_file << *hand1 << "\n";
+    save_file << *hand2 << "\n";
 
     save_file.close();
 
 }
 
 void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
-    header game_params;
     std::ifstream save_file;
-    save_file.open("save.bin");
-    save_file.read((char*)&game_params.size_deck, sizeof(game_params.size_deck));
-    save_file.read((char*)&game_params.size_disc, sizeof(game_params.size_disc));
-    save_file.read((char*)&game_params.size_hand1, sizeof(game_params.size_hand1));
-    save_file.read((char*)&game_params.size_hand2, sizeof(game_params.size_hand2));
+    save_file.open("save.txt");
 
-    std::cout << game_params.size_deck;
-    // data game;
-    // save_file.read((char*)&game.deck, (int)game_params.size_deck);
-    // save_file.read((char*)&game.disc, (int)game_params.size_disc);
-    // save_file.read((char*)&game.hand1, (int)game_params.size_hand1);
-    // save_file.read((char*)&game.hand2, (int)game_params.size_hand2);
+    char deck_string[105];
+    char disc_string[105];
+    char h1_string[6];
+    char h2_string[6];
 
-    // const Deck deck2 = (Deck)game.deck;
-    // std::cout << deck2;
+    save_file >> deck_string;
+    save_file >> disc_string;
+    save_file >> h1_string;
+    save_file >> h2_string;
+
+    std::cout << deck_string << "\n";
+    std::cout << disc_string << "\n";
+    std::cout << h1_string << "\n";
+    std::cout << h2_string << "\n";
+
+    save_file.close();
     
 }
 
@@ -85,8 +72,6 @@ int main(){
     h2 += deck->draw();
     h2 += deck->draw();
     h2 += deck->draw();
-
-    // std::cout<<"Made it here";
 
     saveGame(deck, &disc, &h1, &h2);
 

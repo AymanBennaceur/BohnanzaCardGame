@@ -149,6 +149,8 @@ Deck* CardFactory::getDeck() {
     return d;
 }
 
+
+
 CardFactory* CardFactory::getFactory() {
     
     if(cf == nullptr) {
