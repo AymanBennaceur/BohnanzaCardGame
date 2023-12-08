@@ -1,7 +1,7 @@
 #ifndef HAND_H
 #define HAND_H
 
-#include <iostream>
+// #include <iostream>
 #include <vector>
 #include "Card.h"
 
@@ -27,6 +27,5 @@ class Hand : public std::vector<Card*> {
             return out;
         }
 };
-
 
 #endif

@@ -1,9 +1,6 @@
-#ifndef HAND_H
-#define HAND_H
-
 #include "Hand.h"
 
-Card* Hand::play(){
+Card* Hand::play() {
     Card* c = front();
     erase(begin());
     return c;
@@ -21,7 +18,6 @@ Card* Hand::operator[](int i) {
 
 Hand& Hand::operator+=(Card* c) {
     push_back(c);
-    return this;
+    Hand* h = this;
+    return *h;
 }
-
-#endif

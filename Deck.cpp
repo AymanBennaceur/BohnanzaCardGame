@@ -10,20 +10,20 @@
 // }
 
 Card* Deck::operator[](int i) {
-    return vector<Card*>::at(i);
+    return at(i);
 }
 
 void Deck::add(Card* c) {
-    vector<Card*>::push_back(c);
+    push_back(c);
 }
 
 const Card* Deck::operator[](int i) const {
-    return vector<Card*>::at(i);
+    return at(i);
 }
 
 Card* Deck::draw() {
-    Card* c = vector<Card*>::back();
-    vector<Card*>::pop_back();
+    Card* c = back();
+    pop_back();
     return c;
 }
 
