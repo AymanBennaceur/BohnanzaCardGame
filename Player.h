@@ -26,7 +26,7 @@ class Player {
     int coins,
     numChains,
     maxChains;
-    vector<Chain_Base>* chain;
+    vector<Chain_Base*>* chain;
     string playerName;
     //Wont work until we make hand..
     Hand* hand;
@@ -47,8 +47,9 @@ public:
 
     int getMaxNumChains() const;
     int getNumChains() const;
+    void addChain(Chain_Base*);
 
-    Chain_Base& operator[](int i);
+    Chain_Base* operator[](int i);
 
     void buyThirdChain();
     void printHand(ostream&, bool);

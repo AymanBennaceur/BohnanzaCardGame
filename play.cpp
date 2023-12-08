@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-
+#include <typeinfo>
 
 
 // #include "Card.h"
@@ -68,7 +68,7 @@ game loadSavedGame(CardFactory* cf) {
 
 
 
-void play(Table t) {
+void play(Table t, CardFactory* cf) {
     int turn = 0; // 0 for player 1, 1 for player 2
     Player* players[] = {t.getP1(), t.getP2()};
     while(t.getDeck()->size()>0) {
@@ -89,17 +89,70 @@ void play(Table t) {
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
 
-            // if chain exist, add card to chain
-
-            // else make a new chain and add to player
-
-            // if out of chain space add to trade area
-
-
-            std::cout << "Current chains: \n";
-                for (int i=0; i<players[turn]->getNumChains();i++) {
-                    std::cout << players[turn][i];
+            if (players[turn]->getNumChains() == 0) {
+                std::cout << "No chains to display.\n" ;
+            } else {
+                std::string choice = "yes";
+                while(choice.compare("no")!= 0) {
+                    std::cout << "Current chains: \n";
+                    for (int i=0; i<players[turn]->getNumChains();i++) {
+                        std::cout << players[turn][i];
+                    }
+                    std::cout << "Cash in chain? (1|2|3|no)";
+                    cin >> choice;
+                    if (choice.compare("1") == 0) {
+                        // CASH IN CHAIN 1
+                    } else if (choice.compare("2") == 0) {
+                        // cash in second chain
+                    } else if (choice.compare("3") == 0) {
+                        // check if third chain exists and cash in
+                    } 
                 }
+                
+            }
+            
+
+            // a chain of same type exists
+            bool played = 0;
+            for (int i =0; i<players[turn]->getNumChains(); i++) {
+                if((*players[turn])[i]->isCorrectType(c->getName())) {
+                    std::string choice;
+                    std::cout << "Chain available, add card to chain? (y/n)";
+                    cin >> choice;
+                    if (choice.compare("y")==0) {
+                        std::cout << "\nAdded card to chain\n";
+                        (*(*players[turn])[i])+=c;
+                        played = 1;
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            // chain of same type does not exist but there is room
+            if (!played && players[turn]->getNumChains() < players[turn]->getMaxNumChains()) {
+                std::string choice;
+                std::cout << "\nNo current chains found start a new one? (y/n)";
+                std::cin >> choice;
+                if (choice.compare("y") == 0) {
+                    // program fails on creation
+                    Chain<typeof(c)> chain;
+                    // chain += c;
+                    // players[turn]->addChain(chain);
+                    // played = 1;
+                }
+            }
+
+            std::cout << "\nCurrent chains: \n";
+            for (int i=0; i<players[turn]->getNumChains();i++) {
+                std::cout << players[turn][i];
+            }
+            
+            // if out of chain space ask to buy another chain or put card in trade
+
+
+            
             
             break;
             turn = !turn;
@@ -144,7 +197,7 @@ int main(){
 
         Table t(&p1, &p2, deck, &dpile, &trade);
 
-        play(t);
+        play(t, factory);
 
     } else {
         // there is something wrong with this where i cant access the elements idk

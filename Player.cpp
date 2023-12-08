@@ -56,6 +56,11 @@ Player& Player::operator+=(int numCoins){
     return *this;
 }
 
+void Player::addChain(Chain_Base* c) {
+    chain->push_back(c);
+}
+
+
 //renvoie 2 ou 3, dependament du nombre de chains.
 int Player::getMaxNumChains() const {
     return maxChains;
@@ -67,7 +72,7 @@ int Player::getNumChains() const{
 }
 
 //renvoie la chaîne en position i.
-Chain_Base& Player::operator[](int i){
+Chain_Base* Player::operator[](int i){
     if (i < chain->size()) {
         return chain->at(i);
     }

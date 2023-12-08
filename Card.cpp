@@ -11,6 +11,10 @@ class Blue : public Card {
             beanometer[3] = 10;
 
         }
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -33,6 +37,10 @@ class Chili : public Card {
             beanometer[3] = 9;
 
         }
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -55,6 +63,11 @@ class Stink : public Card {
             beanometer[3] = 8;
 
         }
+
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -77,6 +90,11 @@ class Green : public Card {
             beanometer[3] = 7;
 
         }
+
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -99,6 +117,11 @@ class soy : public Card {
             beanometer[3] = 7;
 
         }
+
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -121,6 +144,11 @@ class black : public Card {
             beanometer[3] = 6;
 
         }
+
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -143,6 +171,11 @@ class Red : public Card {
             beanometer[3] = 5;
 
         }
+
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }
@@ -165,6 +198,11 @@ class garden : public Card {
             beanometer[3] = 0;
 
         }
+        
+        int getMaxCards() {
+            return number_of_cards;
+        }
+
         int getCardsPerCoin(int coins) {
             return beanometer[coins-1];
         }

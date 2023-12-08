@@ -1,6 +1,3 @@
-#include <vector>
-#include "Card.h"
-#include <iostream>
 // using namespace std;
 
 
@@ -17,31 +14,39 @@ template<typename T>
 Chain<T>::Chain()
 {
     T card;
-    chainType = card.getName();
+    chainType = card->getName();
 }
 
 
 //ajoute une carte à Chain. Si le type du temps d’exécution ne correspond pas au type patron de la chaîne
 template<typename T>
 Chain<T>& Chain<T>::operator+=(T card) {
-    if (typeid(card) != typeid(cards.front())) {
-        throw new IllegalTypeException();
-    }
-    else {
+    // fix this
+    // if (std::is_same<typeid(card), typeid(cards.front())>::value) {
+    //     throw new IllegalTypeException();
+    // }
+    // else {
         cards.push_back(card);
-    }
+    // }
     return *this;
 }
 
 template<typename T>
+bool Chain<T>::isCorrectType(std::string other) {
+    return other.compare(chainType) == 0;
+}
+
+
+template<typename T>
 std::vector<T> Chain<T>::getChain() {
-        return &cards;
+        return cards;
     }
 
 //compte le nombre de cartes dans la chaîne courante et renvoie le nombre de pièces
 template<typename T>
 int Chain<T>::sell() {
-    int nbrCarte = getCardsPerCoin(cards.size());
+    T card;
+    int nbrCarte = card->getCardsPerCoin(cards.size());
     return nbrCarte;
 }
 
