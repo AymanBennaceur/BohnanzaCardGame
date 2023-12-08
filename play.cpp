@@ -76,7 +76,7 @@ void play(Deck* deck, DiscardPile dpile, Player p1, Player p2, Hand h1, Hand h2)
             exit(0);
         } else {
             // i have no idea how to display the table
-            players[turn].draw()
+            // players[turn].draw()
         }
     }
     
@@ -114,7 +114,7 @@ int main(){
             h2 += deck->draw();
         }
 
-        play(deck, dpile, h1, h2);
+        play(deck, dpile, p1, p2, h1, h2);
 
     } else {
         // there is something wrong with this where i cant access the elements idk

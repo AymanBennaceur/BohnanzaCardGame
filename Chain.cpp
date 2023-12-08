@@ -14,7 +14,7 @@ public:
 
 //ajoute une carte à Chain. Si le type du temps d’exécution ne correspond pas au type patron de la chaîne
 template<typename T>
-Chain<T>& Chain<T>::operator+=(Card* card) {
+Chain<T>& Chain<T>::operator+=(T card) {
     if (typeid(card) != typeid(cards.front())) {
         throw new IllegalTypeException();
     }
@@ -23,6 +23,11 @@ Chain<T>& Chain<T>::operator+=(Card* card) {
     }
     return *this;
 }
+
+template<typename T>
+std::vector<T> Chain<T>::getChain() {
+        return &cards;
+    }
 
 //compte le nombre de cartes dans la chaîne courante et renvoie le nombre de pièces
 template<typename T>
@@ -33,10 +38,10 @@ int Chain<T>::sell() {
 
 //Ajouter un opérateur d’insertion pour afficher Chain
 template<typename T>
-std::ostream& operator <<(std::ostream& os, Chain<Card>& chain) {
-    os << (chain.getChain())[0].getName() << "   ";
+std::ostream& operator <<(std::ostream& os, Chain<Card*>& chain) {
+    os << (chain.getChain())[0]->getName() << "   ";
     for (int x = 0; x < int(chain.getChain().size());x++) {
-        os<<(chain.getChain())[x];
+        (chain.getChain())[x]->print(os);
     }
     return os;
 }
