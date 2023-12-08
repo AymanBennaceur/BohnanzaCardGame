@@ -6,6 +6,9 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <sstream>
+
+
 #include "CardFactory.h"
 
 

@@ -1,7 +1,8 @@
 CC=g++
 CFLAGS=-I
 
-main: play.o Card.o Deck.o DiscardPile.o CardFactory.o Hand.o TradeArea.o
+# main: play.o Card.o Deck.o DiscardPile.o CardFactory.o Hand.o TradeArea.o
+main:
 	$(CC)  Hand.h 
 	$(CC)  Card.h 
 	$(CC)  Deck.h 

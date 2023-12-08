@@ -1,15 +1,15 @@
 #include <vector>
 #include "Card.h"
 #include <iostream>
-using namespace std;
+// using namespace std;
 
 
 #include "Chain.h"
 
 //Exception
-class IllegalTypeException : public invalid_argument {
+class IllegalTypeException : public std::invalid_argument {
 public:
-    IllegalTypeException() : invalid_argument("IllegalTypeException: Runtime type does not match the template type of the chain.") {}
+    IllegalTypeException() : std::invalid_argument("IllegalTypeException: Runtime type does not match the template type of the chain.") {}
 };
 
 //ajoute une carte à Chain. Si le type du temps d’exécution ne correspond pas au type patron de la chaîne
@@ -33,7 +33,7 @@ int Chain<T>::sell() {
 
 //Ajouter un opérateur d’insertion pour afficher Chain
 template<typename T>
-ostream& operator <<(ostream& os, Chain<Card>& chain) {
+std::ostream& operator <<(std::ostream& os, Chain<Card>& chain) {
     os << (chain.getChain())[0].getName() << "   ";
     for (int x = 0; x < int(chain.getChain().size());x++) {
         os<<(chain.getChain())[x];

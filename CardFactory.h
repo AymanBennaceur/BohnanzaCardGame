@@ -4,8 +4,6 @@
 #include <iostream>
 #include <vector>
 
-
-#include "Hand.h"
 #include "Card.cpp"
 
 class CardFactory {

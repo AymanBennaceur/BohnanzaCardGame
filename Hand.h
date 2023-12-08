@@ -3,6 +3,9 @@
 
 // #include <iostream>
 #include <vector>
+#include <sstream>
+#include <iostream>
+
 #include "CardFactory.h"
 
 class Hand : public std::vector<Card*> {
