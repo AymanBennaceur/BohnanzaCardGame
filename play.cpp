@@ -22,48 +22,50 @@ void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
 
 }
 
-// void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2, CardFactory* cf) {
-//     std::ifstream save_file;
-//     save_file.open("save.txt");
+void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2, CardFactory* cf) {
+    std::ifstream save_file;
+    save_file.open("save.txt");
 
-//     char deck_string[105];
-//     char disc_string[105];
-//     char h1_string[6];
-//     char h2_string[6];
+    char deck_string[105];
+    char disc_string[105];
+    char h1_string[6];
+    char h2_string[6];
 
-//     save_file >> deck_string;
-//     save_file >> disc_string;
-//     save_file >> h1_string;
-//     save_file >> h2_string;
-//     save_file.close();
+    save_file >> deck_string;
+    save_file >> disc_string;
+    save_file >> h1_string;
+    save_file >> h2_string;
+    save_file.close();
 
-//     std::istringstream is;
+    std::istringstream is;
     
-//     is.str(deck_string);
-//     deck = new Deck((std::istream&)is, cf);
+    is.str(deck_string);
+    deck = new Deck((std::istream&)is, cf);
 
-//     is.str(disc_string);
-//     disc = new DiscardPile((std::istream&)is, cf);
+    is.str(disc_string);
+    disc = new DiscardPile((std::istream&)is, cf);
 
-//     is.str(h1_string);
-//     hand1 = new Hand((std::istream&)is, cf);
+    is.str(h1_string);
+    hand1 = new Hand((std::istream&)is, cf);
 
-//     is.str(h2_string);
-//     hand2 = new Hand((std::istream&)is, cf);
+    is.str(h2_string);
+    hand2 = new Hand((std::istream&)is, cf);
     
-// }
+}
 
 int main(){
     CardFactory* factory = CardFactory::getFactory();
 
-    Deck* deck;
+    Deck *deck = new Deck();
+
+    std::cout << *deck;
 
 
-    DiscardPile disc;
-    disc += deck->draw();
-    disc += deck->draw();
-    disc += deck->draw();
-    disc += deck->draw();
+    // DiscardPile disc;
+    // disc += deck->draw();
+    // disc += deck->draw();
+    // disc += deck->draw();
+    // disc += deck->draw();
 
     // Hand h1;
 

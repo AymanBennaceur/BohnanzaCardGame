@@ -38,7 +38,7 @@ CardFactory* CardFactory::cf = 0;
 // }
 
 
-Card* getCard(char c) {
+Card* CardFactory::getCard(char c) {
     if (c == 'B') {
         return (new Blue());
     } else if (c == 'C') {

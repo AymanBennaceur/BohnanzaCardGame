@@ -3,7 +3,8 @@
 Deck::Deck(std::istream& is, CardFactory* cf) {
     char c;
     while (is.get(c)){
-        add(cf->getCard(c));
+        Card* card = cf->getCard(c);
+        add(card);
     }
 }
 
@@ -13,6 +14,7 @@ Deck::Deck() {
     std::istringstream is;
     is.str(s);
     Deck((std::istream&)is, factory);
+    std::cout << *this;
     shuffle();
 }
 
