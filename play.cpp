@@ -4,14 +4,14 @@
 
 
 
-#include "Card.h"
-#include "Deck.h"
-#include "DiscardPile.h"
-#include "Hand.h"
+// #include "Card.h"
+// #include "Deck.h"
+// #include "DiscardPile.h"
+// #include "Hand.h"
 #include "CardFactory.h"
-#include "Player.h"
+// #include "Player.h"
 #include "Table.h"
-#include "TradeArea.h"
+// #include "TradeArea.h"
 
 struct game {
     Deck* deck;

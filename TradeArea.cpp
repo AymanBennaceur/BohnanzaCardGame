@@ -18,7 +18,7 @@ bool TradeArea::legal(Card* card)  {
 }
 
 // supprime de l’échange une carte du correspondant nom.
-Card* TradeArea::trade(string chainName) {
+Card* TradeArea::trade(std::string chainName) {
     // Remove a card of the corresponding bean name from the trade area
     for (auto it = Traded.begin(); it != Traded.end(); ++it) {
         if ((*it)->getName() == chainName) {
@@ -38,17 +38,17 @@ int TradeArea::numCards(){
 }
 
 //l'opérateur d'insertion pour insérer toutes les cartes en échange dans ostream
-std::ostream& operator<<(std::ostream& os, const TradeArea& tradeArea) {
-    const auto& tradedCards = tradeArea.getTraded();
-    for (const auto& card : tradedCards) {
-        os << card->getName() << " ";
-    }
-    return os;
-}
+// std::ostream& operator<<(std::ostream& os, const TradeArea& tradeArea) {
+//     const auto& tradedCards = tradeArea.getTraded();
+//     for (const auto& card : tradedCards) {
+//         os << card->getName() << " ";
+//     }
+//     return os;
+// }
 
 
 //TradeArea possède un constructeur qui accepte un flux istream et construit un objet de type TradeArea à partir du fichier
 //how do we build this from a file ? lol
-TradeArea::TradeArea(std::istream& is, const CardFactory* factory) {
+TradeArea::TradeArea(std::istream& is, CardFactory* factory) {
 
 }

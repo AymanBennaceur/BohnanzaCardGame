@@ -8,11 +8,20 @@ Player::Player(string& name){
     playerName = name;
 
 }
+Player::Player(istream& in, CardFactory* cf){
+    std::getline(in, playerName);
 
-Player::Player(istream& in, CardFactory*){
-//Idk how to implement this
+    in >> numChains >> maxChains;
+    hand = Hand(in, cf);
+
+    // Read and initialize chains
+    char cardType;
+    while (in.get(cardType)) {
+        if (cardType != ' ' && cardType != '\n') {
+            hand.push_back(cf->getCard(cardType));
+        }
+    }
 }
-
 
 
 //obtenir le nom du joueur
