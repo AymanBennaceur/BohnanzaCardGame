@@ -83,8 +83,7 @@ void play(Table t, CardFactory* cf) {
             std::cout << players[turn]->getName() << "'s turn\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
             if(!t.getTradeArea()->numCards() == 0) {
-                std::cout << "impletemnt trade area";
-                //add bean cards from trade area to chains or discard
+                // TODO
             }
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
@@ -101,7 +100,7 @@ void play(Table t, CardFactory* cf) {
                     std::cout << "Cash in chain? (1|2|3|no)";
                     cin >> choice;
                     if (choice.compare("1") == 0) {
-                        // CASH IN CHAIN 1
+                        // TODO CASH IN CHAIN 1
                     } else if (choice.compare("2") == 0) {
                         // cash in second chain
                     } else if (choice.compare("3") == 0) {
@@ -142,18 +141,99 @@ void play(Table t, CardFactory* cf) {
                     // players[turn]->addChain(chain);
                     // played = 1;
                 }
+            } else {
+            // TODO if out of chain space ask to buy another chain or put card in trade
+
             }
 
             std::cout << "\nCurrent chains: \n";
             for (int i=0; i<players[turn]->getNumChains();i++) {
                 std::cout << players[turn][i];
             }
-            
-            // if out of chain space ask to buy another chain or put card in trade
+            // ask the player if they want to cash in chanins again
+            std::string choice = "yes";
+            while(choice.compare("no")!= 0) {
+                std::cout << "Current chains: \n";
+                for (int i=0; i<players[turn]->getNumChains();i++) {
+                    std::cout << players[turn][i];
+                }
+                std::cout << "Cash in chain? (1|2|3|no)";
+                cin >> choice;
+                if (choice.compare("1") == 0) {
+                    // CASH IN CHAIN 1
+                } else if (choice.compare("2") == 0) {
+                    // cash in second chain
+                } else if (choice.compare("3") == 0) {
+                    // check if third chain exists and cash in
+                } 
+            }
+        
+            std::cout<< "\n Reveal hand and discard a card?";
+            std::cin >> choice;
+
+            if (choice.compare("yes") == 0) {
+                int i;
+                while (1) {
+                    std::cout << *(players[turn]->getHand());
+                    std::cout << "\nWhich card would you like to select? (1|2|3|4|5)";
+                    std::cin >> i;
+
+                    if(i <= 5) {
+                        Card* c = (*players[turn]->getHand())[i];
+                        std::cout << "Discarding card: " << c->getName();
+                        *t.discardPile += c;
+                    }
+
+                }
+            }
+
+            // draw 3 cards from deck and place in trading area
+            std::cout << "\nDrawing 3 cards from the deck and placing in trade area\n";
+            *t.tradeArea += t.deck->draw();
+            *t.tradeArea += t.deck->draw();
+            *t.tradeArea += t.deck->draw();
+            std::cout << "Trade area: " << *t.tradeArea;
+
+            while(t.tradeArea->legal(t.discardPile->top())) {
+                std::cout<< "\nPlacing card in trade area: " << *t.discardPile->top();
+                *t.tradeArea += t.discardPile->pickUp();
+            }     
+
+            std::cout << "\nTrade area: " << *t.tradeArea;
 
 
-            
-            
+            for (int i=0; i<t.tradeArea->numCards(); i++) {
+                std::string choice;
+                list<Card*>::const_iterator it = (t.tradeArea->getTraded()).begin();
+                std::advance(it, i);
+                Card *c = *it;
+
+                std::cout << "Would you like to chain the following card? (y/n): " << *c;
+
+                if (choice.compare("y")==0) {
+
+                    bool played = 0;
+                    for (int i =0; i<players[turn]->getNumChains(); i++) {
+                        if((*players[turn])[i]->isCorrectType(c->getName())) {
+                            std::string choice;
+                            std::cout << "Chain available, adding to chain";
+                            (*(*players[turn])[i])+=c;
+                            played = 1;
+                            break;
+                        }
+                    }
+                    if(!played) {
+                        //TODO create a new chain or option to buy chain
+                        std::cout << "Could not find chain";
+                    }
+
+                }
+            }
+
+            while (players[turn]->getHand()->size() < 5) {
+                *(players[turn]->getHand()) += t.getDeck()->draw();
+
+            }
             break;
             turn = !turn;
         }
