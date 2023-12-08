@@ -23,9 +23,9 @@
 - [x] Chain
 - [x] Deck
 - [x] DiscardPile
-- [ ] TradeArea
+- [x] TradeArea
 - [x] Hand
 - [x] Player
-- [ ] Table
+- [x] Table
 - [x] CardFactory
 - [ ] Main
