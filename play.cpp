@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
+
 
 
 #include "Card.h"
@@ -7,7 +9,8 @@
 #include "DiscardPile.h"
 #include "Hand.h"
 #include "CardFactory.h"
-
+#include "Player.h"
+#include "Table.h"
 
 struct game {
     Deck* deck;
@@ -61,46 +64,71 @@ game loadSavedGame(CardFactory* cf) {
 
 }
 
+void play(Deck* deck, DiscardPile dpile, Player p1, Player p2, Hand h1, Hand h2) {
+    int turn = 0; // 0 for player 1, 1 for player 2
+    Player players[] = {p1, p2};
+    while(deck->size()>0) {
+        std::string choice;
+        std::cout << "Pause? (y/n): ";
+        std::cin >> choice;
+        if (choice.compare("y") != 0) {
+            saveGame(deck, &dpile, &h1, &h2);
+            exit(0);
+        } else {
+            // i have no idea how to display the table
+            players[turn].draw()
+        }
+    }
+    
+    
+
+}
+
 int main(){
     CardFactory* factory = CardFactory::getFactory();
+    std::string choice;
 
-    Deck *deck = new Deck();
+    std::cout << "Welcome to Bohnanza!\n";
+    std::cout << "Start a new game or continue? (new|continue): ";
+    std::cin >> choice;
 
-    DiscardPile dpile;
-    dpile += deck->draw();
-    dpile += deck->draw();
-    dpile += deck->draw();
-    dpile += deck->draw();
+    if (choice.compare("continue") != 0) {
+        std::string p1_name;
+        std::string p2_name;
+        std::cout << "\nEnter the name for player 1: ";
+        std::cin >> p1_name;
+        std::cout << "\nEnter the name for player 2: ";
+        std::cin >> p2_name;
 
-    Hand h1;
+        Player p1(p1_name);
+        Player p2(p2_name);
 
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
+        Deck *deck = new Deck();
+        DiscardPile dpile;
 
-    Hand h2;
+        Hand h1;
+        Hand h2;
 
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
+        for (int i=0; i<5; i++) {
+            h1 += deck->draw();
+            h2 += deck->draw();
+        }
 
-    saveGame(deck, &dpile, &h1, &h2);
+        play(deck, dpile, h1, h2);
 
-    Deck* deck2;
-    DiscardPile* disc2;
-    Hand* hand12;
-    Hand* hand22;
+    } else {
+        // there is something wrong with this where i cant access the elements idk
+        game g = loadSavedGame(factory);
+    }
 
-    game g = loadSavedGame(factory);
+    
 
-    // std::cout << g.deck << "\n";
-    // std::cout << *disc2 << "\n";
-    // std::cout << *hand12 << "\n";
-    // std::cout << *hand22 << "\n";
+
+
+
+
+   
+
 
     return 0;
 }
