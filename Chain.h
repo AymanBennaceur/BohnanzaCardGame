@@ -10,6 +10,7 @@
 template<class T>
 class Chain: public Chain_Base {
 public:
+    Chain();
     Chain& operator+=(T);
     int sell();
     Chain(std::istream&, const CardFactory*);
@@ -23,5 +24,6 @@ public:
     }
 private:
     std::vector<T> cards;
+    std::string chainType;
 };
 #endif
