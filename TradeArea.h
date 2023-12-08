@@ -10,13 +10,12 @@
 #include "CardFactory.h"
 
 class TradeArea {
-private:
+
+public:
     std::list<Card*> Traded;
     const std::list<Card*>& getTraded() const {
         return Traded;
     }
-public:
-    
     TradeArea& operator += (Card*);
     bool legal(Card*);
     bool empty();
