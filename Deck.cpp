@@ -6,15 +6,19 @@ Deck::Deck(std::istream& is, CardFactory* cf) {
         Card* card = cf->getCard(c);
         add(card);
     }
+
 }
 
 Deck::Deck() {
-    CardFactory* factory = CardFactory::getFactory();
+    CardFactory* cf = CardFactory::getFactory();
     std::string s = "BBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSGGGGGGGGGGGGGGssssssssssssbbbbbbbbbbRRRRRRRRgggggg";
     std::istringstream is;
     is.str(s);
-    Deck((std::istream&)is, factory);
-    std::cout << *this;
+    char c;
+    while (is.get(c)){
+        Card* card = cf->getCard(c);
+        add(card);
+    }
     shuffle();
 }
 

@@ -9,6 +9,13 @@
 #include "CardFactory.h"
 
 
+struct game {
+    Deck* deck;
+    DiscardPile* dpile;
+    Hand* h1;
+    Hand* h2;
+};
+
 void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
     std::ofstream save_file;
     save_file.open("save.txt");
@@ -22,7 +29,7 @@ void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
 
 }
 
-void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2, CardFactory* cf) {
+game loadSavedGame(CardFactory* cf) {
     std::ifstream save_file;
     save_file.open("save.txt");
 
@@ -38,19 +45,20 @@ void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2, Card
     save_file.close();
 
     std::istringstream is;
+    game g;
     
     is.str(deck_string);
-    deck = new Deck((std::istream&)is, cf);
+    g.deck = new Deck((std::istream&)is, cf);
 
     is.str(disc_string);
-    disc = new DiscardPile((std::istream&)is, cf);
+    g.dpile = new DiscardPile((std::istream&)is, cf);
 
     is.str(h1_string);
-    hand1 = new Hand((std::istream&)is, cf);
+    g.h1 = new Hand((std::istream&)is, cf);
 
     is.str(h2_string);
-    hand2 = new Hand((std::istream&)is, cf);
-    
+    g.h2 = new Hand((std::istream&)is, cf);
+
 }
 
 int main(){
@@ -58,45 +66,41 @@ int main(){
 
     Deck *deck = new Deck();
 
-    std::cout << *deck;
+    DiscardPile dpile;
+    dpile += deck->draw();
+    dpile += deck->draw();
+    dpile += deck->draw();
+    dpile += deck->draw();
 
+    Hand h1;
 
-    // DiscardPile disc;
-    // disc += deck->draw();
-    // disc += deck->draw();
-    // disc += deck->draw();
-    // disc += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
 
-    // Hand h1;
+    Hand h2;
 
-    // h1 += deck->draw();
-    // h1 += deck->draw();
-    // h1 += deck->draw();
-    // h1 += deck->draw();
-    // h1 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
 
-    // Hand h2;
+    saveGame(deck, &dpile, &h1, &h2);
 
-    // h2 += deck->draw();
-    // h2 += deck->draw();
-    // h2 += deck->draw();
-    // h2 += deck->draw();
-    // h2 += deck->draw();
+    Deck* deck2;
+    DiscardPile* disc2;
+    Hand* hand12;
+    Hand* hand22;
 
-    // saveGame(deck, &disc, &h1, &h2);
+    game g = loadSavedGame(factory);
 
-    // Deck* deck2;
-    // DiscardPile* disc2;
-    // Hand* hand12;
-    // Hand* hand22;
-
-
-    // loadSavedGame(deck2, disc2, hand12, hand22, factory);
-
-    // std::cout << deck2;
-    // std::cout << disc2;
-    // std::cout << hand12;
-    // std::cout << hand22;
+    // std::cout << g.deck << "\n";
+    // std::cout << *disc2 << "\n";
+    // std::cout << *hand12 << "\n";
+    // std::cout << *hand22 << "\n";
 
     return 0;
 }
