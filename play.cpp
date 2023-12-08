@@ -11,6 +11,7 @@
 #include "CardFactory.h"
 #include "Player.h"
 #include "Table.h"
+#include "TradeArea.h"
 
 struct game {
     Deck* deck;
@@ -64,15 +65,15 @@ game loadSavedGame(CardFactory* cf) {
 
 }
 
-void play(Deck* deck, DiscardPile dpile, Player p1, Player p2, Hand h1, Hand h2) {
+void play(Table t) {
     int turn = 0; // 0 for player 1, 1 for player 2
-    Player players[] = {p1, p2};
-    while(deck->size()>0) {
+    Player* players[] = {t.getP1(), t.getP2()};
+    while(t.getDeck()->size()>0) {
         std::string choice;
         std::cout << "Pause? (y/n): ";
         std::cin >> choice;
         if (choice.compare("y") != 0) {
-            saveGame(deck, &dpile, &h1, &h2);
+            // saveGame(t);
             exit(0);
         } else {
             // i have no idea how to display the table
@@ -114,7 +115,11 @@ int main(){
             h2 += deck->draw();
         }
 
-        play(deck, dpile, p1, p2, h1, h2);
+        TradeArea trade;
+
+        Table t(&p1, &p2, deck, &dpile, &trade);
+
+        play(t);
 
     } else {
         // there is something wrong with this where i cant access the elements idk

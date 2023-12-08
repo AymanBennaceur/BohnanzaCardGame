@@ -14,7 +14,14 @@
   pile is face up, but only the top card is visible.
 - Le jeu se termine quand la plate-forme (deck) est vide.
 
+#### To run the game:
+** this was made to work with g++13
 
+make && ./main
+
+#### To rebuild:
+
+make clean && make && ./main
 
 
 ###  Checklist - done / to be done
