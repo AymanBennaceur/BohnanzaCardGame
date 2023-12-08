@@ -20,18 +20,19 @@ struct game {
     Hand* h2;
 };
 
-void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
+void save(Table&table) {
     std::ofstream save_file;
     save_file.open("save.txt");
 
-    save_file << *deck << "\n";
-    save_file << *disc << "\n";
-    save_file << *hand1 << "\n";
-    save_file << *hand2 << "\n";
+    save_file << *table.deck<< "\n";
+    save_file << table.player1 << "\n";
+    save_file << table.player2 << "\n";
+    save_file << *table.tradeArea << "\n";
+    save_file << *table.discardPile << "\n";
 
     save_file.close();
-
 }
+
 
 game loadSavedGame(CardFactory* cf) {
     std::ifstream save_file;
