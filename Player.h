@@ -24,8 +24,8 @@ class NotEnoughCoins: public exception{
 
 class Player {
     int coins,
-    numChains = 0,
-    maxChains = 2;
+    numChains,
+    maxChains;
     vector<Chain_Base>* chain;
     string playerName;
     //Wont work until we make hand..

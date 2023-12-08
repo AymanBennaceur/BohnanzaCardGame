@@ -82,20 +82,18 @@ void play(Table t) {
             std::cout << "------ Table -------\n" << t << "------ End table -------\n" ;
             std::cout << players[turn]->getName() << "'s turn\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
-            if(!t.getTradeArea()->empty()) {
-                //add bean cards from trade area to chains or discard
-            }
+            // if(!t.getTradeArea()->empty()) {
+            //     //add bean cards from trade area to chains or discard
+            // }
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
             std::cout << "Current chains: \n";
             for (int i=0; i<players[turn]->getNumChains();i++) {
                 std::cout << players[turn][i];
             }
+            break;
         }
     }
-    
-    
-
 }
 
 int main(){

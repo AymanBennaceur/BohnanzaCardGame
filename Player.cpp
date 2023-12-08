@@ -6,6 +6,9 @@ using namespace std;
 //Constructeurs
 Player::Player(string& name){
     playerName = name;
+    numChains = 0;
+    maxChains = 2;
+    coins = 0;
 
 }
 Player::Player(istream& in, CardFactory* cf){
@@ -21,6 +24,10 @@ Player::Player(istream& in, CardFactory* cf){
             hand->push_back(cf->getCard(cardType));
         }
     }
+
+    numChains = 0;
+    maxChains = 2;
+    coins = 0;
 }
 
 void Player::setHand(Hand* h) {
@@ -50,7 +57,7 @@ Player& Player::operator+=(int numCoins){
 }
 
 //renvoie 2 ou 3, dependament du nombre de chains.
-int Player::getMaxNumChains() const{
+int Player::getMaxNumChains() const {
     return maxChains;
 }
 
