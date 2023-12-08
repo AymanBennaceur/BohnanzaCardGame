@@ -1,11 +1,10 @@
+#ifndef CARD_FACTORY_H
+#define CARD_FACTORY_H
+
 #include <iostream>
 #include <vector>
-#include <random>
-#include <algorithm>
-#include <stdexcept>
 
-#include "Deck.h"
-#include "DiscardPile.h"
+
 #include "Hand.h"
 #include "Card.cpp"
 
@@ -23,11 +22,13 @@ class CardFactory {
         CardFactory(CardFactory &other) = delete;
         void operator=(const CardFactory&) = delete;
 
-        Deck* getDeck();
+        // Deck* getDeck();
+        Card* getCard(char c);
 
         static CardFactory* getFactory();
 
 
-
 };
 
+
+#endif

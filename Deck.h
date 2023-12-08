@@ -3,18 +3,25 @@
 
 #include <iostream>
 #include <vector>
-#include "Card.h"
+#include <random>
+#include <algorithm>
+#include <stdexcept>
+#include <sstream>
+
+#include "CardFactory.h"
+
 
 
 class Deck : public std::vector<Card*> {
     public:
         using vector<Card*>::vector;
-        // example save file: b B R s S S ...
-        // Deck(std::istream& is, const CardFactory* cf);
+        Deck(std::istream& is, CardFactory* cf);
+        Deck();
         Card* operator[](int i);
         const Card* operator[](int i) const;
         Card* draw();
         void add(Card* c);
+        void shuffle();
 
         friend std::ostream& operator << (std::ostream &out, Deck &d){
             for (int i=0; i<d.size(); i++){

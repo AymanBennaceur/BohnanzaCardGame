@@ -1,5 +1,13 @@
 #include "DiscardPile.h"
 
+DiscardPile::DiscardPile(std::istream& is, CardFactory* cf) {
+    char c;
+    while (is.get(c)){
+        push_back(cf->getCard(c));
+    }
+}
+
+
 DiscardPile& DiscardPile::operator+=(Card* c) {
     push_back(c);
     DiscardPile* d = this;

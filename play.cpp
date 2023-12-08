@@ -49,39 +49,38 @@ int main(){
     CardFactory* factory = CardFactory::getFactory();
 
 
-    Deck* deck = (factory->getDeck());
 
-    DiscardPile disc;
-    disc += deck->draw();
-    disc += deck->draw();
-    disc += deck->draw();
-    disc += deck->draw();
+    // DiscardPile disc;
+    // disc += deck->draw();
+    // disc += deck->draw();
+    // disc += deck->draw();
+    // disc += deck->draw();
 
-    Hand h1;
+    // Hand h1;
 
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
 
-    Hand h2;
+    // Hand h2;
 
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
 
-    saveGame(deck, &disc, &h1, &h2);
+    // saveGame(deck, &disc, &h1, &h2);
 
-    Deck* deck2;
-    DiscardPile* disc2;
-    Hand* hand12;
-    Hand* hand22;
+    // Deck* deck2;
+    // DiscardPile* disc2;
+    // Hand* hand12;
+    // Hand* hand22;
 
 
-    loadSavedGame(deck2, disc2, hand12, hand22);
+    // loadSavedGame(deck2, disc2, hand12, hand22);
 
 
     return 0;

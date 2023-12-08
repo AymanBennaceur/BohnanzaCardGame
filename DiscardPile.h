@@ -6,13 +6,13 @@
 #include <vector>
 #include <random>
 #include <algorithm>
-#include "Card.h"
+#include "CardFactory.h"
 
 
 class DiscardPile : public std::vector<Card*>{ 
     using vector<Card*>::vector;
     public:
-    // DiscardPile(std::istream& is, const CardFactory* cf);
+    DiscardPile(std::istream& is, CardFactory* cf);
 
     DiscardPile& operator+=(Card* c);
 

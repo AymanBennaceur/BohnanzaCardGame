@@ -1,13 +1,26 @@
 #include "Deck.h"
 
-// Deck(std::istream& is, const CardFactory* cf) {
-//     if(is) {
-//         this = cf.getDeckFromSave(is);
-//     }
-//     else {
-//         this = cf.getDeck();
-//     }
-// }
+Deck::Deck(std::istream& is, CardFactory* cf) {
+    char c;
+    while (is.get(c)){
+        add(cf->getCard(c));
+    }
+}
+
+Deck::Deck() {
+    CardFactory* factory = CardFactory::getFactory();
+    std::string s = "BBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSGGGGGGGGGGGGGGssssssssssssbbbbbbbbbbRRRRRRRRgggggg";
+    std::istringstream is;
+    is.str(s);
+    Deck((std::istream&)is, factory);
+    shuffle();
+}
+
+void Deck::shuffle() {
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(begin(), end(), g);
+}
 
 Card* Deck::operator[](int i) {
     return at(i);
