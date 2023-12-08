@@ -68,8 +68,16 @@ void Player::buyThirdChain(){
 //affiche l'ensemble de la main du joueur (avec l'argument True)
 //dans le flux correspondant ostream.
 void Player::printHand(ostream& out, bool argument){
-    //Implement later when we have hand.cpp ready
-}
+        if (argument) {
+            // Print the entire hand
+            for (const auto& card : hand) {
+                out << card->getName() << " ";
+            }
+        } else {
+            // Print only the first card
+            out << hand.top()->getName();
+        }
+    }
 
 //this prints the first desired line "Dave 3 coins"
 //we need to print the rest (it says uses Hand so keeping as is for now until implemented)
