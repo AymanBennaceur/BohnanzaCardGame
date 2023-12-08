@@ -3,13 +3,12 @@
 
 // #include <iostream>
 #include <vector>
-#include "Card.h"
+#include "CardFactory.h"
 
 class Hand : public std::vector<Card*> {
     public:
-        // Hand(istream& is, const CardFactory cf) {
-        //     this = cf.getHandFromSave(is);
-        // }
+        
+        Hand(std::istream& is, CardFactory* cf);
         using vector<Card*>::vector;
 
         Hand& operator+=(Card* c);

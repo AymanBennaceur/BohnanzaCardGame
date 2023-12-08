@@ -1,5 +1,12 @@
 #include "Hand.h"
 
+Hand::Hand(std::istream& is, CardFactory* cf) {
+    char c;
+    while (is.get(c)){
+        push_back(cf->getCard(c));
+    }
+}
+
 Card* Hand::play() {
     Card* c = front();
     erase(begin());
