@@ -76,15 +76,16 @@ void play(Table t) {
         std::cout << "Pause? (y/n): ";
         std::cin >> choice;
         if (choice.compare("y") == 0) {
-            // saveGame(t);
+            save(t);
             exit(0);
         } else {
             std::cout << "------ Table -------\n" << t << "------ End table -------\n" ;
             std::cout << players[turn]->getName() << "'s turn\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
-            // if(!t.getTradeArea()->empty()) {
-            //     //add bean cards from trade area to chains or discard
-            // }
+            if(!t.getTradeArea()->numCards() == 0) {
+                std::cout << "impletemnt trade area";
+                //add bean cards from trade area to chains or discard
+            }
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
 
@@ -92,7 +93,7 @@ void play(Table t) {
 
             // else make a new chain and add to player
 
-            // if out of chain space idk
+            // if out of chain space add to trade area
 
 
             std::cout << "Current chains: \n";

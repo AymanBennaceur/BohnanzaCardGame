@@ -17,9 +17,9 @@ bool TradeArea::legal(Card* card)  {
     return false;
 }
 
-bool TradeArea::empty() {
-    numCards() == 0;
-}
+// bool TradeArea::empty() {
+//     numCards() == 0;
+// }
 
 
 // supprime de l’échange une carte du correspondant nom.
