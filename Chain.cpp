@@ -13,7 +13,7 @@ public:
 template<typename T>
 Chain<T>::Chain(Card *card)
 {
-    cards.push_back(firstCard);
+    cards.push_back(card);
 }
 
 
