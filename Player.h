@@ -29,7 +29,7 @@ class Player {
     vector<Chain_Base>* chain;
     string playerName;
     //Wont work until we make hand..
-    Hand hand;
+    Hand* hand;
 public:
     //constructeur
     Player(string&);
@@ -40,6 +40,8 @@ public:
     int getNumCoins() const;
 
     void setHand(Hand*);
+    Hand* getHand();
+
 
     Player& operator+=(int);
 

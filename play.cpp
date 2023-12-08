@@ -72,12 +72,14 @@ void play(Table t) {
         std::string choice;
         std::cout << "Pause? (y/n): ";
         std::cin >> choice;
-        if (choice.compare("y") != 0) {
+        if (choice.compare("y") == 0) {
             // saveGame(t);
             exit(0);
         } else {
-            // i have no idea how to display the table
-            // players[turn].draw()
+            std::cout << t;
+            *(players[turn]->getHand()) += t.getDeck()->draw();
+            std::cout << *(players[turn]->getHand());
+            break;
         }
     }
     
@@ -110,10 +112,13 @@ int main(){
         Hand h1;
         Hand h2;
 
+
         for (int i=0; i<5; i++) {
             h1 += deck->draw();
             h2 += deck->draw();
         }
+        p1.setHand(&h1);
+        p1.setHand(&h2);
 
         TradeArea trade;
 

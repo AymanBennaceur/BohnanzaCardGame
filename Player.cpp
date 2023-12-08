@@ -12,19 +12,23 @@ Player::Player(istream& in, CardFactory* cf){
     std::getline(in, playerName);
 
     in >> numChains >> maxChains;
-    hand = Hand(in, cf);
+    hand = new Hand(in, cf);
 
     // Read and initialize chains
     char cardType;
     while (in.get(cardType)) {
         if (cardType != ' ' && cardType != '\n') {
-            hand.push_back(cf->getCard(cardType));
+            hand->push_back(cf->getCard(cardType));
         }
     }
 }
 
 void Player::setHand(Hand* h) {
-    hand = *h;
+    hand = h;
+}
+
+Hand* Player::getHand() {
+    return hand;
 }
 
 
@@ -83,12 +87,12 @@ void Player::buyThirdChain(){
 void Player::printHand(ostream& out, bool argument){
         if (argument) {
             // Print the entire hand
-            for (const auto& card : hand) {
+            for (const auto& card : *hand) {
                 out << card->getName() << " ";
             }
         } else {
             // Print only the first card
-            out << hand.top()->getName();
+            out << hand->top()->getName();
         }
     }
 

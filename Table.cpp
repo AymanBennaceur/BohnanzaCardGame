@@ -33,10 +33,10 @@ void Table::printHand(bool flag)  {
 }
 
 std::ostream& operator<<(std::ostream& os, const Table& table) {
-    os << "Player 1:\n" << table.player1 << "\n";
-    os << "Player 2:\n" << table.player2 << "\n";
-//    os << "Discard Pile:\n" << table.discardPile << "\n";
-    os << "Trade Area:\n" << table.tradeArea << "\n";
+    os << "Player 1:\n" << *table.player1 << "\n";
+    os << "Player 2:\n" << *table.player2 << "\n";
+    os << "Discard Pile:\n" << *table.discardPile << "\n";
+    os << "Trade Area:\n" << *table.tradeArea << "\n";
     return os;
 }
 
