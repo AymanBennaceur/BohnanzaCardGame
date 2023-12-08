@@ -65,21 +65,21 @@ int main(){
     disc += deck->draw();
     disc += deck->draw();
 
-    Hand h1;
+    // Hand h1;
 
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
 
-    Hand h2;
+    // Hand h2;
 
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
 
     // saveGame(deck, &disc, &h1, &h2);
 
