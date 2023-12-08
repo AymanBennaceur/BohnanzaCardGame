@@ -22,7 +22,7 @@ void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
 
 }
 
-void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
+void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2, CardFactory* cf) {
     std::ifstream save_file;
     save_file.open("save.txt");
 
@@ -35,42 +35,51 @@ void loadSavedGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
     save_file >> disc_string;
     save_file >> h1_string;
     save_file >> h2_string;
-
-    std::cout << deck_string << "\n";
-    std::cout << disc_string << "\n";
-    std::cout << h1_string << "\n";
-    std::cout << h2_string << "\n";
-
     save_file.close();
+
+    std::istringstream is;
+    
+    is.str(deck_string);
+    deck = new Deck((std::istream&)is, cf);
+
+    is.str(disc_string);
+    disc = new DiscardPile((std::istream&)is, cf);
+
+    is.str(h1_string);
+    hand1 = new Hand((std::istream&)is, cf);
+
+    is.str(h2_string);
+    hand2 = new Hand((std::istream&)is, cf);
     
 }
 
 int main(){
     CardFactory* factory = CardFactory::getFactory();
 
+    Deck* deck;
 
 
-    // DiscardPile disc;
-    // disc += deck->draw();
-    // disc += deck->draw();
-    // disc += deck->draw();
-    // disc += deck->draw();
+    DiscardPile disc;
+    disc += deck->draw();
+    disc += deck->draw();
+    disc += deck->draw();
+    disc += deck->draw();
 
-    // Hand h1;
+    Hand h1;
 
-    // h1 += deck->draw();
-    // h1 += deck->draw();
-    // h1 += deck->draw();
-    // h1 += deck->draw();
-    // h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
 
-    // Hand h2;
+    Hand h2;
 
-    // h2 += deck->draw();
-    // h2 += deck->draw();
-    // h2 += deck->draw();
-    // h2 += deck->draw();
-    // h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
 
     // saveGame(deck, &disc, &h1, &h2);
 
@@ -80,8 +89,12 @@ int main(){
     // Hand* hand22;
 
 
-    // loadSavedGame(deck2, disc2, hand12, hand22);
+    // loadSavedGame(deck2, disc2, hand12, hand22, factory);
 
+    // std::cout << deck2;
+    // std::cout << disc2;
+    // std::cout << hand12;
+    // std::cout << hand22;
 
     return 0;
 }
