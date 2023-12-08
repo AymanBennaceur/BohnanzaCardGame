@@ -11,10 +11,9 @@ public:
 
 //constructor
 template<typename T>
-Chain<T>::Chain()
+Chain<T>::Chain(Card *card)
 {
-    T card;
-    chainType = card->getName();
+    cards.push_back(firstCard);
 }
 
 

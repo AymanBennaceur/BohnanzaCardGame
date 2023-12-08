@@ -137,7 +137,7 @@ void play(Table t, CardFactory* cf) {
                 std::cin >> choice;
                 if (choice.compare("y") == 0) {
                     // program fails on creation
-                    Chain<typeof(c)> chain;
+                        Chain<typeof(c)> Chain(c);
                     // chain += c;
                     // players[turn]->addChain(chain);
                     // played = 1;

@@ -14,7 +14,7 @@
 template<class T>
 class Chain: public Chain_Base {
 public:
-    Chain();
+    Chain(Card *card);
     Chain& operator+=(T);
     int sell();
     // Chain(std::istream&, CardFactory*);
