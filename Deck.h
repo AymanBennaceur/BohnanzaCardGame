@@ -14,10 +14,11 @@ class Deck : public std::vector<Card*> {
         Card* operator[](int i);
         const Card* operator[](int i) const;
         Card* draw();
-        friend std::ostream& operator << (std::ostream &out, const Deck &d){
+        void add(Card*);
+
+        friend std::ostream& operator << (std::ostream &out, Deck &d){
             for (int i=0; i<d.size(); i++){
                 d.at(i)->print(out);
-                out << " ";
             }
             return out;
         }

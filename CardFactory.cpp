@@ -3,27 +3,124 @@ CardFactory* CardFactory::cf = 0;
 
 Deck* CardFactory::getDeck() {
     Deck* d;
+    d->reserve(104);
 
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
+    d->add(new Blue());
 
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
-    d->push_back(new Blue());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
+    d->add(new Chili());
 
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
+    d->add(new Stink());
 
-    std::cout<<"made it here";
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
+    d->add(new Green());
 
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+    d->add(new soy());
+
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+    d->add(new black());
+
+    d->add(new Red());
+    d->add(new Red());
+    d->add(new Red());
+    d->add(new Red());
+    d->add(new Red());
+    d->add(new Red());
+    d->add(new Red());
+    d->add(new Red());
+
+    d->add(new garden());
+    d->add(new garden());
+    d->add(new garden());
+    d->add(new garden());
+    d->add(new garden());
+    d->add(new garden());
 
     // for (int i = 0; i<20; i++) {
-    //     d->push_back(new Blue());
+    //     std::cout<<"  here " << i;
+
+    //     d->add(new Blue());
     // }
     // for (i = 0; i<18; i++) {
     //     d->push_back(new Chili());
@@ -46,9 +143,9 @@ Deck* CardFactory::getDeck() {
     // for (i = 0; i<6; i++) {
     //     d->push_back(new garden());
     // } 
-    // std::random_device rd;
-    // std::mt19937 g(rd());
-    // std::shuffle(d->begin(), d->end(), g);
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(d->begin(), d->end(), g);
     return d;
 }
 

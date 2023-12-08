@@ -2,54 +2,31 @@
 #define HAND_H
 
 #include <iostream>
-#include <queue>
-#include <list>
+#include <vector>
 #include "Card.h"
-// #include "CardFactory.h"
 
-template<typename Card, typename Container=std::queue<Card*>>
-class Hand {
-    std::queue<Card*> h;
-
-
+class Hand : public std::vector<Card*> {
     public:
         // Hand(istream& is, const CardFactory cf) {
         //     this = cf.getHandFromSave(is);
         // }
+        using vector<Card*>::vector;
 
-        Hand():h(){}
+        Hand& operator+=(Card* c);
 
-        auto operator+=(Card* c) {
-            h.push(c);
-            Hand<Card, std::queue<Card*>>* hand = this;
-            return *hand;
-        }
-        Card* play() {
-            Card* c = h.front();
-            h.pop();
-            return c;
-        }
+        Card* play();
 
-        Card* top() {
-            return h.front();
-        }
+        Card* top();
 
-        Card* operator[](int i) {
-            Card* c = typename std::list<Card*> (h.at(i-1));
-            h.erase(h.begin() + i-1);
-            return c;
-        }
+        Card* operator[](int i);
 
-        // typedef typename std::list<Card*>::const_iterator const_iterator;
-        friend std::ostream & operator << (std::ostream &out, const Hand &hand){
-
-            for (typename std::list<Card*>::const_iterator it=hand.h.begin(); it != hand.h.end(); ++it){
-                (*it)->print(out);
-                out << " ";
+        friend std::ostream& operator << (std::ostream &out, Hand &h){
+            for (int i=0; i<h.size(); i++){
+                h.at(i)->print(out);
             }
             return out;
         }
-
 };
+
 
 #endif

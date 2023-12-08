@@ -20,8 +20,6 @@ class CardFactory {
 
     public:
         
-        using handType = Hand<std::queue<Card*>>;
-
         CardFactory(CardFactory &other) = delete;
         void operator=(const CardFactory&) = delete;
 

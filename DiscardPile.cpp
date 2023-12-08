@@ -17,6 +17,7 @@ Card* DiscardPile::top() {
 void DiscardPile::print(std::ostream& out) {
     for (int i=0; i<vector<Card*>::size(); i++){
         vector<Card*>::at(i)->print(out);
-        out << " ";
     }
 }
+
+

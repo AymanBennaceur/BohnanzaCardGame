@@ -22,7 +22,7 @@ class DiscardPile : public std::vector<Card*>{
 
     void print(std::ostream& out);
 
-    friend std::ostream & operator << (std::ostream &out, const DiscardPile &d){
+    friend std::ostream & operator << (std::ostream &out, DiscardPile &d){
         d.back()->print(out);
         out << " ";
         return out;
