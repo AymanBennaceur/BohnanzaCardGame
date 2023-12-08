@@ -23,7 +23,7 @@ make && ./main
 
 make clean && make && ./main
 
-####UML that we made (it doesn’t reflect 100% our code - it's just a way to showcase the game overall)
+#### UML that we made (it doesn’t reflect 100% our code - it's just a way to showcase the game overall)
 <img width="1014" alt="image" src="https://github.com/AymanBennaceur/BohnanzaCardGame/assets/71724174/c3b3fa8f-020e-434b-bdb1-a24c64f30443">
 
 
