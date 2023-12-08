@@ -1,39 +1,72 @@
 #include <iostream>
+#include <fstream>
+
 
 #include "Card.h"
 #include "Deck.h"
 #include "DiscardPile.h"
 #include "Hand.h"
+#include "CardFactory.h"
 
-// struct save {
-//     Deck d;
-//     DiscardPile dis;
-//     Hand hand1;
-//     Hand hand2;
+
+using handType = Hand<Card, std::queue<Card*>>;
+
+struct save {
+    int size_deck;
+    Deck deck;
+    int size_disc;
+    DiscardPile disc;
+    handType hand1;
+    handType hand2;
+};
+
+void saveGame(Deck* deck, DiscardPile* disc, handType* hand1, handType* hand2) {
+    save game;
+    game.size_deck = deck->size();
+    game.deck = *deck;
+    game.size_disc = disc->size();
+    game.disc = *disc;
+    game.hand1 = *hand1;
+    game.hand2 = *hand2;
+
+    std::ofstream save_file;
+    save_file.open("save.bin");
+    save_file.write((char*)&game, sizeof(game));
+    save_file.close();
+
+}
+
+// void loadSavedGame(Deck* deck, DiscardPile* disc, handType* hand1, handType* hand2) {
+
 // }
 
+int main(){
+    CardFactory* factory = CardFactory::getFactory();
+    Deck* deck = (factory->getDeck());
 
-/*
-Save file structure:
+    DiscardPile disc;
+    disc += deck->draw();
+    disc += deck->draw();
+    disc += deck->draw();
+    disc += deck->draw();
 
-start --
-size_of_deck
-deck vector
+    handType h1;
 
-size_of_discard
-discard vector
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
+    h1 += deck->draw();
 
-hand 1 list
+    handType h2;
 
-hand 2 list
-end --
-*/
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
+    h2 += deck->draw();
 
-void saveGame(Deck* deck, DiscardPile* disc, Hand* hand1, Hand* hand2) {
-    // std::ofstream output_file("save");
-    // output_file << deck.size() << "\n";
+    saveGame(deck, &disc, &h1, &h2);
 
-    // std::ostream_iterator<Card*> output_iterator(output_file, "\n");
-    // std::copy(deck.begin(), deck.end(), output_iterator);
-    
-    }
+    return 0;
+}

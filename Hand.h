@@ -17,12 +17,13 @@ class Hand {
         //     this = cf.getHandFromSave(is);
         // }
 
-        Hand& operator+=(Card* c) {
-            h.push(c);
-            Hand * hand = this;
-            return hand;
-        }
+        Hand():h(){}
 
+        auto operator+=(Card* c) {
+            h.push(c);
+            Hand<Card, std::queue<Card*>>* hand = this;
+            return *hand;
+        }
         Card* play() {
             Card* c = h.front();
             h.pop();
@@ -34,7 +35,7 @@ class Hand {
         }
 
         Card* operator[](int i) {
-            Card* c = h.at(i-1);
+            Card* c = typename std::list<Card*> (h.at(i-1));
             h.erase(h.begin() + i-1);
             return c;
         }
