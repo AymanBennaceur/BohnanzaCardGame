@@ -42,31 +42,39 @@ void saveGame(Deck* deck, DiscardPile* disc, handType* hand1, handType* hand2) {
 
 int main(){
     CardFactory* factory = CardFactory::getFactory();
+
+    // printf("%x", factory);
+
     Deck* deck = (factory->getDeck());
 
-    DiscardPile disc;
-    disc += deck->draw();
-    disc += deck->draw();
-    disc += deck->draw();
-    disc += deck->draw();
+    // std::cout<<"Made it here";
 
-    handType h1;
 
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
-    h1 += deck->draw();
+    // DiscardPile disc;
+    // disc += deck->draw();
+    // disc += deck->draw();
+    // disc += deck->draw();
+    // disc += deck->draw();
 
-    handType h2;
+    // handType h1;
 
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
-    h2 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
+    // h1 += deck->draw();
 
-    saveGame(deck, &disc, &h1, &h2);
+    // handType h2;
+
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+    // h2 += deck->draw();
+
+    // std::cout<<"Made it here";
+
+    // saveGame(deck, &disc, &h1, &h2);
 
     return 0;
 }
