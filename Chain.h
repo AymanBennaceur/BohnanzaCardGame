@@ -4,19 +4,20 @@
 #include <vector>
 #include "CardFactory.h"
 // #include "Card.h"
+#include "Chain_Base.h"
 
 // using namespace std;
 
 template<class T>
-class Chain {
+class Chain: public Chain_Base {
 public:
-    Chain<T>& operator+=(Card*);
-    int sell();
-    Chain(std::istream&, const CardFactory*);
+    Chain<T>& operator+=(Card*) override;
+    int sell() override;
+    Chain(istream&, const CardFactory*) ;
     vector<T> getChain() {
         return cards;
     }
-    friend ostream& operator << (std::ostream & out, const Chain& chain);
+    friend ostream& operator << (ostream & out, const Chain& chain) ;
 private:
     vector<T> cards;
 };
