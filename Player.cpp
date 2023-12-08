@@ -23,6 +23,10 @@ Player::Player(istream& in, CardFactory* cf){
     }
 }
 
+void Player::setHand(Hand* h) {
+    hand = *h;
+}
+
 
 //obtenir le nom du joueur
 string Player::getName() const{

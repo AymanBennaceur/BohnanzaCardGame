@@ -15,7 +15,7 @@
 - Le jeu se termine quand la plate-forme (deck) est vide.
 
 #### To run the game:
-** this was made to work with g++13
+** this was made to work with GNU g++13
 
 make && ./main
 

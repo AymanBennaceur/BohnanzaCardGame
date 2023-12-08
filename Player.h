@@ -39,6 +39,8 @@ public:
     string getName() const;
     int getNumCoins() const;
 
+    void setHand(Hand*);
+
     Player& operator+=(int);
 
     int getMaxNumChains() const;
