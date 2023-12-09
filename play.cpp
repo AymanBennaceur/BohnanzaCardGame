@@ -83,61 +83,63 @@ void play(Table t, CardFactory* cf) {
             std::cout << players[turn]->getName() << "'s turn\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
             if (!t.getTradeArea()->numCards() == 0) {
-                cout << "Trade Area is not empty. What would you like to do?" << endl;
-                cout << "1. Add bean cards to chains" << endl;
-                cout << "2. Discard bean cards" << endl;
+                std::cout << "Trade Area is not empty. What would you like to do?" << std::endl;
+                std::cout << "1. Add bean cards to chains" << std::endl;
+                std::cout << "2. Discard bean cards" << std::endl;
 
-                int choice;
-                cin >> choice;
+                int choice1;
+                std::cin >> choice1;
 
-                switch (choice) {
+                switch (choice1) {
                     case 1: {
                         // Add bean cards to chains
 
-                        for (auto const& i : t.getTradeArea()->getTraded) {
-                            cout << "Do you want to add " << i->getName() << " to a chain? (y/n): ";
+                        for (auto const& c : t.getTradeArea()->getTraded()) {
+                            std::cout << "Do you want to add " << c->getName() << " to a chain? (y/n): ";
                             char decision;
-                            cin >> decision;
+                            std::cin >> decision;
                             if (decision == 'y') {
-                                cout << t.getP1()->getNumChains() << endl;
-                                cout << "Choose a chain (enter chain number or 0 to skip): ";
-
-                                int chainChoice;
-                                cin >> chainChoice;
-
-                                if (chainChoice == 'y' ) {
-                                    t.getP1().addChain(i)
-                                    cout << i->getName() << " added to Chain " << chainChoice << endl;
+                                bool played = 0;
+                                for (int i =0; i<players[turn]->getNumChains(); i++) {
+                                    if((*players[turn])[i]->isCorrectType(c->getName())) {
+                                        std::string choice;
+                                        std::cout << "Chain available, adding to chain";
+                                        (*(*players[turn])[i])+=c;
+                                        played = 1;
+                                        break;
+                                    }
                                 }
-
-                                else {
-                                    cout << "choice not y: " << i->getName() << " discarded." << endl;
-                                    //not sure how to discard, need one line here to do it
+                                if(!played) {
+                                    //TODO create a new chain or option to buy chain
+                                    std::cout << "Could not find chain";
                                 }
-
-                                else {
-                                    // Discard the card
-                                    t.getP1()->discardCard(card);
-                                    cout << card->getName() << " discarded." << endl;
-                                }
+                            } else {
+                                // Discard the card
+                                std::cout << "Discarding card: " << c->getName();
+                                *t.discardPile += c;
                             }
+                            
                             break;
                         }
 
                         case 2: {
-                            for (auto const& i : t.getTradeArea()->getTraded) {
+                            for (auto const& i : t.getTradeArea()->getTraded()) {
                                 //how can we discard? need one line here to do that
-                                cout << i->getName() << " discarded." << endl;
+                                std::cout << i->getName() << " discarded." << std::endl;
                             }
                             break;
                         }
                         default:{
-                            cout << "Invalid choice. Trade Area cards remain." << endl;
+                            std::cout << "Invalid choice. Trade Area cards remain." << std::endl;
                             break;
                         }
 
                     }
                 }
+            }
+
+
+            // ==============================================================================
 
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
@@ -204,15 +206,15 @@ void play(Table t, CardFactory* cf) {
                 std::cout << *(*players[turn])[i] << "\n";
             }
             // ask the player if they want to cash in chanins again
-            std::string choice;
+            std::string choice2;
             std::cout << "Cash in chain? (1|2|3|no)";
-            std::cin >> choice;
-            while(choice.compare("no")!= 0) {
-                if (choice.compare("1") == 0) {
+            std::cin >> choice2;
+            while(choice2.compare("no")!= 0) {
+                if (choice2.compare("1") == 0) {
                     // CASH IN CHAIN 1
-                } else if (choice.compare("2") == 0) {
+                } else if (choice2.compare("2") == 0) {
                     // cash in second chain
-                } else if (choice.compare("3") == 0) {
+                } else if (choice2.compare("3") == 0) {
                     // check if third chain exists and cash in
                 } 
                 std::cout << "Current chains: \n";
@@ -220,13 +222,13 @@ void play(Table t, CardFactory* cf) {
                     std::cout << players[turn][i];
                 }
                 std::cout << "Cash in chain? (1|2|3|no)";
-                std::cin >> choice;
+                std::cin >> choice2;
             }
         
             std::cout<< "\n Reveal hand and discard a card?";
-            std::cin >> choice;
+            std::cin >> choice2;
 
-            if (choice.compare("yes") == 0) {
+            if (choice2.compare("yes") == 0) {
                 int i;
                 while (1) {
                     std::cout << *(players[turn]->getHand());
@@ -295,7 +297,7 @@ void play(Table t, CardFactory* cf) {
     }
 }
 
-int main(){
+int main() {
     CardFactory* factory = CardFactory::getFactory();
     std::string choice;
 
