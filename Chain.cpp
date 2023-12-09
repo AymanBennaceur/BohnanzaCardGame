@@ -21,12 +21,12 @@ Chain<T>::Chain(Card *card)
 template<typename T>
 Chain<T>& Chain<T>::operator+=(T card) {
     // fix this
-    // if (std::is_same<typeid(card), typeid(cards.front())>::value) {
-    //     throw new IllegalTypeException();
-    // }
-    // else {
+    if (typeid(card) == typeid(cards.front())) {
+        throw new IllegalTypeException();
+    }
+    else {
         cards.push_back(card);
-    // }
+    }
     return *this;
 }
 

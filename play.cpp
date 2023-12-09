@@ -151,17 +151,29 @@ void play(Table t, CardFactory* cf) {
                 while(choice.compare("no")!= 0) {
                     std::cout << "Current chains: \n";
                     for (int i=0; i<players[turn]->getNumChains();i++) {
-                        std::cout << players[turn][i];
+                        std::cout << i << ":  " << *(players[turn]->getChains().at(0)) << "\n";
                     }
                     std::cout << "Cash in chain? (1|2|3|no)";
                     std::cin >> choice;
                     if (choice.compare("1") == 0) {
-                        // TODO CASH IN CHAIN 1
-                    } else if (choice.compare("2") == 0) {
-                        // cash in second chain
-                    } else if (choice.compare("3") == 0) {
-                        // check if third chain exists and cash in
-                    } 
+                    if (players[turn]->getNumChains() >= 1) {
+                        *players[turn] += players[turn]->getChains().at(0)->sell();
+                    } else {
+                        std::cout << "There are no chains\n" ;
+                    }
+                } else if (choice.compare("2") == 0) {
+                    if (players[turn]->getNumChains() >= 2) {
+                        *players[turn] += players[turn]->getChains().at(1)->sell();
+                    } else {
+                        std::cout << "There is no second chain\n" ;
+                    }
+                } else if (choice.compare("3") == 0) {
+                    if (players[turn]->getNumChains() >= 3) {
+                        *players[turn] += players[turn]->getChains().at(2)->sell();
+                    } else {
+                        std::cout << "There is no third chain\n" ;
+                    }
+                } 
                 }
                 
             }
@@ -204,7 +216,7 @@ void play(Table t, CardFactory* cf) {
 
             std::cout << "\nCurrent chains: \n";
             for (int i=0; i<players[turn]->getNumChains();i++) {
-                std::cout << *(players[turn]->getChains().at(0)) << "\n";
+                std::cout << i << ":  " << *(players[turn]->getChains().at(0)) << "\n";
             }
             
             // ask the player if they want to cash in chanins again
@@ -213,15 +225,27 @@ void play(Table t, CardFactory* cf) {
             std::cin >> choice2;
             while(choice2.compare("no")!= 0) {
                 if (choice2.compare("1") == 0) {
-                    // CASH IN CHAIN 1
+                    if (players[turn]->getNumChains() >= 1) {
+                        *players[turn] += players[turn]->getChains().at(0)->sell();
+                    } else {
+                        std::cout << "There are no chains\n" ;
+                    }
                 } else if (choice2.compare("2") == 0) {
-                    // cash in second chain
+                    if (players[turn]->getNumChains() >= 2) {
+                        *players[turn] += players[turn]->getChains().at(1)->sell();
+                    } else {
+                        std::cout << "There is no second chain\n" ;
+                    }
                 } else if (choice2.compare("3") == 0) {
-                    // check if third chain exists and cash in
+                    if (players[turn]->getNumChains() >= 3) {
+                        *players[turn] += players[turn]->getChains().at(2)->sell();
+                    } else {
+                        std::cout << "There is no third chain\n" ;
+                    }
                 } 
                 std::cout << "Current chains: \n";
                 for (int i=0; i<players[turn]->getNumChains();i++) {
-                    std::cout << players[turn][i];
+                    std::cout << i << ":  " << *(players[turn]->getChains().at(0)) << "\n";
                 }
                 std::cout << "Cash in chain? (1|2|3|no) ";
                 std::cin >> choice2;
@@ -284,8 +308,38 @@ void play(Table t, CardFactory* cf) {
                         }
                     }
                     if(!played) {
-                        //TODO create a new chain or option to buy chain
                         std::cout << "Could not find chain";
+                         // ask the player if they want to cash in chanins again
+                        std::string choice2;
+                        std::cout << "Cash in chain? (1|2|3|no)";
+                        std::cin >> choice2;
+                        while(choice2.compare("no")!= 0) {
+                            if (choice2.compare("1") == 0) {
+                                if (players[turn]->getNumChains() >= 1) {
+                                    *players[turn] += players[turn]->getChains().at(0)->sell();
+                                } else {
+                                    std::cout << "There are no chains\n" ;
+                                }
+                            } else if (choice2.compare("2") == 0) {
+                                if (players[turn]->getNumChains() >= 2) {
+                                    *players[turn] += players[turn]->getChains().at(1)->sell();
+                                } else {
+                                    std::cout << "There is no second chain\n" ;
+                                }
+                            } else if (choice2.compare("3") == 0) {
+                                if (players[turn]->getNumChains() >= 3) {
+                                    *players[turn] += players[turn]->getChains().at(2)->sell();
+                                } else {
+                                    std::cout << "There is no third chain\n" ;
+                                }
+                            } 
+                            std::cout << "Current chains: \n";
+                            for (int i=0; i<players[turn]->getNumChains();i++) {
+                                std::cout << i << ":  " << *(players[turn]->getChains().at(0)) << "\n";
+                            }
+                            std::cout << "Cash in chain? (1|2|3|no) ";
+                            std::cin >> choice2;
+                        }
                     }
 
                 }
@@ -295,7 +349,6 @@ void play(Table t, CardFactory* cf) {
                 *(players[turn]->getHand()) += t.getDeck()->draw();
 
             }
-            break;
             turn = !turn;
         }
     }
