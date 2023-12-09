@@ -1,5 +1,6 @@
 #include "Card.h"
 
+//Card class
 class Blue : public Card {
     public:
         Blue() {

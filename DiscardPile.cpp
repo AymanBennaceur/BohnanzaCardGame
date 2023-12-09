@@ -1,5 +1,7 @@
 #include "DiscardPile.h"
 
+
+//discard pile implementation as requested
 DiscardPile::DiscardPile(std::istream& is, CardFactory* cf) {
     char c;
     while (is.get(c)){

@@ -1,5 +1,6 @@
 #include "Hand.h"
 
+// hand class implementation as requested
 Hand::Hand(std::istream& is, CardFactory* cf) {
     char c;
     while (is.get(c)){
