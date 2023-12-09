@@ -11,7 +11,7 @@ public:
 
 //constructor
 template<typename T>
-Chain<T>::Chain(Card *firstCard)
+Chain<T>::Chain(Card *card)
 {
     cards.push_back(card);
 }
