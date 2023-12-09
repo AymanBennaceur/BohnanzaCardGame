@@ -248,9 +248,9 @@ void play(Table t, CardFactory* cf) {
 
             // draw 3 cards from deck and place in trading area
             std::cout << "\nDrawing 3 cards from the deck and placing in trade area\n";
-            *t.tradeArea += t.deck->draw();
-            *t.tradeArea += t.deck->draw();
-            *t.tradeArea += t.deck->draw();
+            *t.tradeArea += t.getDeck()->draw();
+            *t.tradeArea += t.getDeck()->draw();
+            *t.tradeArea += t.getDeck()->draw();
             std::cout << "Trade area: " << *t.tradeArea;
 
             while(t.tradeArea->legal(t.discardPile->top())) {
