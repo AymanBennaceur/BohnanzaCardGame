@@ -72,9 +72,9 @@ void play(Table t, CardFactory* cf) {
     int turn = 0; // 0 for player 1, 1 for player 2
     Player* players[] = {t.getP1(), t.getP2()};
     while(t.getDeck()->size()>0) {
-        std::string choice;
-        std::cout << "Pause? (y/n): ";
-        std::cin >> choice;
+        std::string choice = "n";
+        // std::cout << "Pause? (y/n): ";
+        // std::cin >> choice;
         if (choice.compare("y") == 0) {
             save(t);
             exit(0);
