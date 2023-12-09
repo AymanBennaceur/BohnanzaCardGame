@@ -223,11 +223,11 @@ void play(Table t, CardFactory* cf) {
                 for (int i=0; i<players[turn]->getNumChains();i++) {
                     std::cout << players[turn][i];
                 }
-                std::cout << "Cash in chain? (1|2|3|no)";
+                std::cout << "Cash in chain? (1|2|3|no) ";
                 std::cin >> choice2;
             }
         
-            std::cout<< "\n Reveal hand and discard a card?";
+            std::cout<< "\nReveal hand and discard a card? (yes|no) ";
             std::cin >> choice2;
 
             if (choice2.compare("yes") == 0) {
@@ -241,14 +241,16 @@ void play(Table t, CardFactory* cf) {
                         Card* c = (*players[turn]->getHand())[i];
                         std::cout << "Discarding card: " << c->getName();
                         *t.discardPile += c;
+                        break;
                     }
+                    
 
                 }
             }
 
             // draw 3 cards from deck and place in trading area
             std::cout << "\nDrawing 3 cards from the deck and placing in trade area\n";
-            *t.tradeArea += t.getDeck()->draw();
+            *t.tradeArea += t.getDeck()->draw(); 
             *t.tradeArea += t.getDeck()->draw();
             *t.tradeArea += t.getDeck()->draw();
             std::cout << "Trade area: " << *t.tradeArea;
@@ -267,8 +269,8 @@ void play(Table t, CardFactory* cf) {
                 std::advance(it, i);
                 Card *c = *it;
 
-                std::cout << "Would you like to chain the following card? (y/n): " << *c;
-
+                std::cout << "\nWould you like to chain the following card? (y/n): " << *c;
+                std::cin >> choice;
                 if (choice.compare("y")==0) {
 
                     bool played = 0;

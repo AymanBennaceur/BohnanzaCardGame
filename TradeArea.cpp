@@ -3,7 +3,8 @@
 //ajoute une carte à l’échange mais ne vérifie pas si c'est légal de placer la carte
 TradeArea& TradeArea::operator+=(Card* card) {
     Traded.push_back(card);
-    return *this;
+    TradeArea* t = this;
+    return *t;
 }
 
 //renvoie true si la carte peut être légalement ajouté à l’échange
