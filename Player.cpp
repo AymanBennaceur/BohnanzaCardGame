@@ -81,6 +81,10 @@ Chain<Card*>* Player::operator[](int i){
 
 }
 
+std::vector<Chain<Card*>*> Player::getChains() {
+    return chain;
+}
+
 //ajoute une troisième chaîne vide au joueur pour deux pièces
 void Player::buyThirdChain(){
         if(coins < 2){

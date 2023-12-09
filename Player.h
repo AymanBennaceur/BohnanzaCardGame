@@ -43,6 +43,7 @@ public:
     void setHand(Hand*);
     Hand* getHand();
 
+    std::vector<Chain<Card*>*> getChains();
 
     Player& operator+=(int);
 

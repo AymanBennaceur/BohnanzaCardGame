@@ -124,8 +124,8 @@ void play(Table t, CardFactory* cf) {
 
                         case 2: {
                             for (auto const& i : t.getTradeArea()->getTraded()) {
-                                //how can we discard? need one line here to do that
-                                std::cout << i->getName() << " discarded." << std::endl;
+                                std::cout << "Discarding card: " << i->getName();
+                                *t.discardPile += i;
                             }
                             break;
                         }
@@ -191,8 +191,9 @@ void play(Table t, CardFactory* cf) {
                 std::cout << "\nNo current chains found start a new one? (y/n)";
                 std::cin >> choice;
                 if (choice.compare("y") == 0) {
-                    Chain<typeof(c)> chain(c);
-                    players[turn]->addChain(&chain);
+                    Chain<typeof(c)>* chain = new Chain<Card*>(c);
+
+                    players[turn]->addChain(chain);
                     played = 1;
                 }
             } else {
@@ -203,8 +204,9 @@ void play(Table t, CardFactory* cf) {
 
             std::cout << "\nCurrent chains: \n";
             for (int i=0; i<players[turn]->getNumChains();i++) {
-                std::cout << *(*players[turn])[i] << "\n";
+                std::cout << *(players[turn]->getChains().at(0)) << "\n";
             }
+            
             // ask the player if they want to cash in chanins again
             std::string choice2;
             std::cout << "Cash in chain? (1|2|3|no)";

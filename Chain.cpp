@@ -49,6 +49,7 @@ int Chain<T>::sell() {
     return nbrCarte;
 }
 
+
 // Ajouter un opérateur d’insertion pour afficher Chain
 // template<typename T>
 // std::ostream& Chain<T>::operator<<(std::ostream& os, Chain<T>& chain) {
