@@ -6,6 +6,7 @@
 
 #include "Card.cpp"
 
+//card_factory as requested
 class CardFactory {
     private:
 

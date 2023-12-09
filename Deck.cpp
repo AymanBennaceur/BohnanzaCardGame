@@ -1,5 +1,7 @@
 #include "Deck.h"
 
+
+//deck class as requested
 Deck::Deck(std::istream& is, CardFactory* cf) {
     char c;
     while (is.get(c)){

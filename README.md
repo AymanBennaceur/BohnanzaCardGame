@@ -1,5 +1,6 @@
 # BohnanzaCardGame
-
+##### #Ayman Ben Naceur 300203212
+##### #Daria Przhebelska   300106264
 ### Explained Overall
 - Deux joueurs placent les cartes en chaînes, échangent les cartes et vendent les chaînes.
 - Les cartes ont 8 faces différentes correspondant à différents types de Haricots
@@ -14,16 +15,18 @@
   pile is face up, but only the top card is visible.
 - Le jeu se termine quand la plate-forme (deck) est vide.
 
-#### To run the game:
-** this was made to work with GNU g++13
-
+# To run the game:
+this was made to work with GNU g++13
+### simply run these two comands
 make && ./main
 
 #### To rebuild:
 
 make clean && make && ./main
 
-#### UML that we made (it doesn’t reflect 100% our code - it's just a way to showcase the game overall)
+### UML for game
+(it doesn’t reflect 100% our code - it's just a way to showcase the game overall)
+
 <img width="1014" alt="image" src="https://github.com/AymanBennaceur/BohnanzaCardGame/assets/71724174/c3b3fa8f-020e-434b-bdb1-a24c64f30443">
 
 
@@ -38,4 +41,4 @@ make clean && make && ./main
 - [x] Player
 - [x] Table
 - [x] CardFactory
-- [ ] Main
+- [x] Main
