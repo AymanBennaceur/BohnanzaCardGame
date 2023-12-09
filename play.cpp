@@ -147,17 +147,13 @@ void play(Table t, CardFactory* cf) {
 
             std::cout << "\nCurrent chains: \n";
             for (int i=0; i<players[turn]->getNumChains();i++) {
-                std::cout << players[turn][i] << "\n";
+                std::cout << *(*players[turn])[i] << "\n";
             }
             // ask the player if they want to cash in chanins again
-            std::string choice = "yes";
+            std::string choice;
+            std::cout << "Cash in chain? (1|2|3|no)";
+            std::cin >> choice;
             while(choice.compare("no")!= 0) {
-                std::cout << "Current chains: \n";
-                for (int i=0; i<players[turn]->getNumChains();i++) {
-                    std::cout << players[turn][i];
-                }
-                std::cout << "Cash in chain? (1|2|3|no)";
-                std::cin >> choice;
                 if (choice.compare("1") == 0) {
                     // CASH IN CHAIN 1
                 } else if (choice.compare("2") == 0) {
@@ -165,6 +161,12 @@ void play(Table t, CardFactory* cf) {
                 } else if (choice.compare("3") == 0) {
                     // check if third chain exists and cash in
                 } 
+                std::cout << "Current chains: \n";
+                for (int i=0; i<players[turn]->getNumChains();i++) {
+                    std::cout << players[turn][i];
+                }
+                std::cout << "Cash in chain? (1|2|3|no)";
+                std::cin >> choice;
             }
         
             std::cout<< "\n Reveal hand and discard a card?";

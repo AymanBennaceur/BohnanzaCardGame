@@ -110,6 +110,6 @@ void Player::printHand(std::ostream& out, bool argument){
 //this prints the first desired line "Dave 3 coins"
 //we need to print the rest (it says uses Hand so keeping as is for now until implemented)
 std::ostream& operator<<(std::ostream& out, const Player& player){
-    out << player.getName() << " has  " << player.getNumCoins() << " coin"<< (player.coins > 1 ? "s" : "") << "\n";
+    out << player.getName() << " has  " << player.getNumCoins() << " coin"<< (player.coins == 1 ? "" : "s") << "\n";
     return out;
 }

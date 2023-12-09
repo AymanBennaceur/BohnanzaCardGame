@@ -20,9 +20,12 @@ public:
     // Chain(std::istream&, CardFactory*);
     std::vector<T> getChain();
     friend std::ostream& operator << (std::ostream & out, Chain& chain)  {
-        out << (chain.getChain())[0]->getName() << "   ";
+        // if (chain.cards.size() > 0) {
+        //     out << chain.cards.at(0)->getName() << "   ";
+        // }
+
         for (int x = 0; x < int(chain.getChain().size());x++) {
-            (chain.getChain())[x]->print(out);
+            chain.cards.at(x)->print(out);
         }
         return out;
     }
