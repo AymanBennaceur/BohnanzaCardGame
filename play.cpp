@@ -80,11 +80,10 @@ void play(Table t, CardFactory* cf) {
             exit(0);
         } else {
 
-            std::cout << "----------- player " << turn+1 << "'s turn -------------";
             std::cout << "------ Table -------\n" << t << "------ End table -------\n" ;
-            std::cout << players[turn]->getName() << "'s turn\n";
+            std::cout << players[turn]->getName() << "'s turn---------------------\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
-            if (!t.getTradeArea()->numCards() == 0) {
+            if (!(t.getTradeArea()->numCards() == 0)) {
                 std::cout << "Trade Area is not empty. What would you like to do?" << std::endl;
                 std::cout << "1. Add bean cards to chains" << std::endl;
                 std::cout << "2. Discard bean cards" << std::endl;
