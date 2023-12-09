@@ -82,9 +82,63 @@ void play(Table t, CardFactory* cf) {
             std::cout << "------ Table -------\n" << t << "------ End table -------\n" ;
             std::cout << players[turn]->getName() << "'s turn\n";
             *(players[turn]->getHand()) += t.getDeck()->draw();
-            if(!t.getTradeArea()->numCards() == 0) {
-                // TODO
-            }
+            if (!t.getTradeArea()->numCards() == 0) {
+                cout << "Trade Area is not empty. What would you like to do?" << endl;
+                cout << "1. Add bean cards to chains" << endl;
+                cout << "2. Discard bean cards" << endl;
+
+                int choice;
+                cin >> choice;
+
+                switch (choice) {
+                    case 1: {
+                        // Add bean cards to chains
+
+                        for (auto const& i : t.getTradeArea()->getTraded) {
+                            cout << "Do you want to add " << i->getName() << " to a chain? (y/n): ";
+                            char decision;
+                            cin >> decision;
+                            if (decision == 'y') {
+                                cout << t.getP1()->getNumChains() << endl;
+                                cout << "Choose a chain (enter chain number or 0 to skip): ";
+
+                                int chainChoice;
+                                cin >> chainChoice;
+
+                                if (chainChoice == 'y' ) {
+                                    t.getP1().addChain(i)
+                                    cout << i->getName() << " added to Chain " << chainChoice << endl;
+                                }
+
+                                else {
+                                    cout << "choice not y: " << i->getName() << " discarded." << endl;
+                                    //not sure how to discard, need one line here to do it
+                                }
+
+                                else {
+                                    // Discard the card
+                                    t.getP1()->discardCard(card);
+                                    cout << card->getName() << " discarded." << endl;
+                                }
+                            }
+                            break;
+                        }
+
+                        case 2: {
+                            for (auto const& i : t.getTradeArea()->getTraded) {
+                                //how can we discard? need one line here to do that
+                                cout << i->getName() << " discarded." << endl;
+                            }
+                            break;
+                        }
+                        default:{
+                            cout << "Invalid choice. Trade Area cards remain." << endl;
+                            break;
+                        }
+
+                    }
+                }
+
             Card* c = players[turn]->getHand()->play();
             std::cout << "Card to play: " << *c << "\n";
 
