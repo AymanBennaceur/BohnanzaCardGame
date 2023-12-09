@@ -98,7 +98,7 @@ void play(Table t, CardFactory* cf) {
                         std::cout << players[turn][i];
                     }
                     std::cout << "Cash in chain? (1|2|3|no)";
-                    cin >> choice;
+                    std::cin >> choice;
                     if (choice.compare("1") == 0) {
                         // TODO CASH IN CHAIN 1
                     } else if (choice.compare("2") == 0) {
@@ -117,7 +117,7 @@ void play(Table t, CardFactory* cf) {
                 if((*players[turn])[i]->isCorrectType(c->getName())) {
                     std::string choice;
                     std::cout << "Chain available, add card to chain? (y/n)";
-                    cin >> choice;
+                    std::cin >> choice;
                     if (choice.compare("y")==0) {
                         std::cout << "\nAdded card to chain\n";
                         (*(*players[turn])[i])+=c;
@@ -135,20 +135,19 @@ void play(Table t, CardFactory* cf) {
                 std::cout << "\nNo current chains found start a new one? (y/n)";
                 std::cin >> choice;
                 if (choice.compare("y") == 0) {
-                    // program fails on creation
-                        Chain<typeof(c)> Chain(c);
-                    // chain += c;
-                    // players[turn]->addChain(chain);
-                    // played = 1;
+                    Chain<typeof(c)> chain(c);
+                    players[turn]->addChain(&chain);
+                    played = 1;
                 }
             } else {
-            // TODO if out of chain space ask to buy another chain or put card in trade
+                std::cout << "No current chains found and out of chain slots";
+
 
             }
 
             std::cout << "\nCurrent chains: \n";
             for (int i=0; i<players[turn]->getNumChains();i++) {
-                std::cout << players[turn][i];
+                std::cout << players[turn][i] << "\n";
             }
             // ask the player if they want to cash in chanins again
             std::string choice = "yes";
@@ -158,7 +157,7 @@ void play(Table t, CardFactory* cf) {
                     std::cout << players[turn][i];
                 }
                 std::cout << "Cash in chain? (1|2|3|no)";
-                cin >> choice;
+                std::cin >> choice;
                 if (choice.compare("1") == 0) {
                     // CASH IN CHAIN 1
                 } else if (choice.compare("2") == 0) {
@@ -204,7 +203,7 @@ void play(Table t, CardFactory* cf) {
 
             for (int i=0; i<t.tradeArea->numCards(); i++) {
                 std::string choice;
-                list<Card*>::const_iterator it = (t.tradeArea->getTraded()).begin();
+                std::list<Card*>::const_iterator it = (t.tradeArea->getTraded()).begin();
                 std::advance(it, i);
                 Card *c = *it;
 

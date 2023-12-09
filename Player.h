@@ -11,11 +11,11 @@
 //doesnt exist for now..
 #include "Hand.h"
 #include <iostream>
-using namespace std;
+// using namespace std;
 
 
 
-class NotEnoughCoins: public exception{
+class NotEnoughCoins: public std::exception{
     virtual const char* what() const throw(){
         return "Vous n'avez pas assez de pièces (2coins) pour acheter une troisième chaîne";
     }
@@ -26,17 +26,18 @@ class Player {
     int coins,
     numChains,
     maxChains;
-    vector<Chain_Base*>* chain;
-    string playerName;
+    std::string playerName;
     //Wont work until we make hand..
     Hand* hand;
 public:
+    std::vector<Chain<Card*>*> chain;
+
     //constructeur
-    Player(string&);
-    Player(istream& in, CardFactory*);
+    Player(std::string&);
+    Player(std::istream& in, CardFactory*);
 
     //returns the name of the player
-    string getName() const;
+    std::string getName() const;
     int getNumCoins() const;
 
     void setHand(Hand*);
@@ -47,16 +48,16 @@ public:
 
     int getMaxNumChains() const;
     int getNumChains() const;
-    void addChain(Chain_Base*);
+    void addChain(Chain<Card*>*);
 
-    Chain_Base* operator[](int i);
+    Chain<Card*>* operator[](int i);
 
     void buyThirdChain();
-    void printHand(ostream&, bool);
+    void printHand(std::ostream&, bool);
 
-    void operator<<(ostream& out);
+    void operator<<(std::ostream& out);
 
-    friend ostream& operator<<(ostream& out, const Player& player);
+    friend std::ostream& operator<<(std::ostream& out, const Player& player);
 
 };
 

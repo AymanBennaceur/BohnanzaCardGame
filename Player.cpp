@@ -1,17 +1,16 @@
 
 #include "Player.h"
 #include <iostream>
-using namespace std;
+// using namespace std;
 
 //Constructeurs
-Player::Player(string& name){
+Player::Player(std::string& name){
     playerName = name;
-    numChains = 0;
+    numChains = chain.size();
     maxChains = 2;
     coins = 0;
-
 }
-Player::Player(istream& in, CardFactory* cf){
+Player::Player(std::istream& in, CardFactory* cf){
     std::getline(in, playerName);
 
     in >> numChains >> maxChains;
@@ -39,7 +38,7 @@ Hand* Player::getHand() {
 }
 
 //obtenir le nom du joueur
-string Player::getName() const{
+std::string Player::getName() const{
     return playerName;
 }
 
@@ -56,8 +55,9 @@ Player& Player::operator+=(int numCoins){
     return *this;
 }
 
-void Player::addChain(Chain_Base* c) {
-    chain->push_back(c);
+void Player::addChain(Chain<Card*>* c) {
+    chain.push_back(c);
+    numChains++;
 }
 
 
@@ -72,12 +72,12 @@ int Player::getNumChains() const{
 }
 
 //renvoie la chaîne en position i.
-Chain_Base* Player::operator[](int i){
-    if (i < chain->size()) {
-        return chain->at(i);
+Chain<Card*>* Player::operator[](int i){
+    if (i < chain.size()) {
+        return chain.at(i);
     }
     //en cas d'erreur, simplement retourner premier element..
-    return chain->at(0);
+    return chain.at(0);
 
 }
 
@@ -95,7 +95,7 @@ void Player::buyThirdChain(){
 //affiche la première carte de la main du joueur (avec l'argument False)
 //affiche l'ensemble de la main du joueur (avec l'argument True)
 //dans le flux correspondant ostream.
-void Player::printHand(ostream& out, bool argument){
+void Player::printHand(std::ostream& out, bool argument){
         if (argument) {
             // Print the entire hand
             for (const auto& card : *hand) {
@@ -109,7 +109,7 @@ void Player::printHand(ostream& out, bool argument){
 
 //this prints the first desired line "Dave 3 coins"
 //we need to print the rest (it says uses Hand so keeping as is for now until implemented)
-ostream& operator<<(ostream& out, const Player& player){
+std::ostream& operator<<(std::ostream& out, const Player& player){
     out << player.getName() << " has  " << player.getNumCoins() << " coin"<< (player.coins > 1 ? "s" : "") << "\n";
     return out;
 }
